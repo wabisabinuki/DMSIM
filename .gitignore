@@ -1,0 +1,48 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test code and local test helpers (non-public)
+tests/
+tmp_cards/
+card_testing/
+tools/evaluate_look_reveal_bounce.py
+print_folder.py
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.python-version
+
+# IDE and OS files
+.vscode/
+.idea/
+.cursor/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary output
+*.log
+*.tmp
+*.bak
+folder_structure.txt

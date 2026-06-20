@@ -1,0 +1,1409 @@
+{
+  "cards": {
+    "test.vanilla": {
+      "kind": "creature",
+      "name_ja": "テスト・バニラ",
+      "cost": 2,
+      "civilizations": [
+        "water"
+      ],
+      "power": 2000,
+      "race_ja": "テスト",
+      "abilities": {}
+    },
+    "test.evolution": {
+      "kind": "creature",
+      "name_ja": "テスト進化",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 5000,
+      "race_ja": "テスト",
+      "special_types": [
+        "evolution"
+      ],
+      "abilities": {
+        "keyword": [
+          "evolution"
+        ]
+      }
+    },
+    "test.neo": {
+      "kind": "creature",
+      "name_ja": "テストNEO",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 4000,
+      "race_ja": "テスト",
+      "special_types": [
+        "neo"
+      ],
+      "abilities": {
+        "keyword": [
+          "evolution"
+        ],
+        "triggered": [
+          {
+            "ability_id": "neo_enter_battle_draw",
+            "label": "Draw when this creature enters",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "draw",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.power_source": {
+      "kind": "creature",
+      "name_ja": "テスト・パワー源",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "power_source_enter_battle_power",
+            "label": "Gain power when this creature enters",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "power_modifier_self",
+                "amount": 2000
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.leave_draw_source": {
+      "kind": "creature",
+      "name_ja": "テスト・離脱ドロー源",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "leave_draw_source_zone_change_draw",
+            "label": "Draw when this card leaves battle",
+            "trigger": {
+              "type": "zone_change",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "condition": {
+              "type": "event_zone_change_matches",
+              "from_zone": "battle"
+            },
+            "active_zones": "any",
+            "effects": [
+              {
+                "effect_id": "draw",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.blocker": {
+      "kind": "creature",
+      "name_ja": "テスト・ブロッカー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 3000,
+      "race_ja": "テスト",
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ]
+      }
+    },
+    "test.dream_hyper": {
+      "kind": "creature",
+      "name_ja": "テスト・ドリームハイパー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 7000,
+      "hyper_power": 11000,
+      "race_ja": "テスト",
+      "special_types": [
+        "dream",
+        "hyper_mode"
+      ],
+      "abilities": {
+        "keyword": [
+          "z_rush",
+          "triple_breaker_hyper"
+        ]
+      }
+    },
+    "test.dream_hyper_evolution": {
+      "kind": "creature",
+      "name_ja": "テスト・ドリームハイパー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 9000,
+      "race_ja": "テスト",
+      "special_types": [
+        "dream",
+        "evolution"
+      ],
+      "abilities": {
+        "keyword": [
+          "evolution"
+        ]
+      }
+    },
+    "test.hyper_spell_lock": {
+      "kind": "creature",
+      "name_ja": "テスト・ハイパー呪文ロック",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 7000,
+      "hyper_power": 11000,
+      "race_ja": "テスト",
+      "special_types": [
+        "dream",
+        "hyper_mode"
+      ],
+      "abilities": {
+        "keyword": [
+          "z_rush"
+        ],
+        "static": [
+          {
+            "ability_id": "cannot_cast_spells",
+            "type": "cast_rule",
+            "rule": {
+              "kind": "cannot_cast",
+              "affected_player": "opponent"
+            },
+            "condition": {
+              "type": "source_has_state",
+              "state": "hyper_mode"
+            }
+          }
+        ]
+      }
+    },
+    "test.spell_lock_all": {
+      "kind": "creature",
+      "name_ja": "テスト・全呪文ロック",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "static": [
+          {
+            "ability_id": "cannot_cast_spells",
+            "type": "cast_rule",
+            "rule": {
+              "kind": "cannot_cast",
+              "affected_player": "opponent"
+            }
+          }
+        ]
+      }
+    },
+    "test.spell_lock_at_most_5": {
+      "kind": "creature",
+      "name_ja": "テスト・5以下呪文ロック",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "static": [
+          {
+            "ability_id": "cannot_cast_spells",
+            "type": "cast_rule",
+            "rule": {
+              "kind": "cannot_cast",
+              "affected_player": "opponent",
+              "max_cost": 5
+            }
+          }
+        ]
+      }
+    },
+    "test.spell_lock_exact_3": {
+      "kind": "creature",
+      "name_ja": "テスト・3コスト呪文ロック",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "static": [
+          {
+            "ability_id": "cannot_cast_spells",
+            "type": "cast_rule",
+            "rule": {
+              "kind": "cannot_cast",
+              "affected_player": "opponent",
+              "exact_cost": 3
+            }
+          }
+        ]
+      }
+    },
+    "test.spell_lock_water": {
+      "kind": "creature",
+      "name_ja": "テスト・水呪文ロック",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "static": [
+          {
+            "ability_id": "cannot_cast_spells",
+            "type": "cast_rule",
+            "rule": {
+              "kind": "cannot_cast",
+              "affected_player": "opponent",
+              "civilizations": [
+                "water"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "test.spell_lock_controller": {
+      "kind": "creature",
+      "name_ja": "テスト・自分呪文ロック",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "static": [
+          {
+            "ability_id": "cannot_cast_spells",
+            "type": "cast_rule",
+            "rule": {
+              "kind": "cannot_cast",
+              "affected_player": "controller"
+            }
+          }
+        ]
+      }
+    },
+    "test.hyper_multi_breaker": {
+      "kind": "creature",
+      "name_ja": "テスト・ハイパーマルチブレイカー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 7000,
+      "hyper_power": 11000,
+      "race_ja": "テスト",
+      "special_types": [
+        "dream",
+        "hyper_mode"
+      ],
+      "abilities": {
+        "keyword": [
+          "double_breaker",
+          "triple_breaker_hyper"
+        ]
+      }
+    },
+    "test.dm26-rp1.DMR.DM1/DM1": {
+      "kind": "creature",
+      "name_ja": "ボルメテウス・リバース・ドラゴン",
+      "cost": 5,
+      "civilizations": [
+        "water"
+      ],
+      "power": 7000,
+      "hyper_power": 12000,
+      "race_ja": [
+        "エクスドリーマー",
+        "アーマード・ドラゴン",
+        "超化獣"
+      ],
+      "special_types": [
+        "hyper_mode",
+        "dream"
+      ],
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "double_breaker",
+          "unblockable and untouchable",
+          "z_rush",
+          {
+            "ability_id": "triple_breaker",
+            "active_if": {
+              "type": "source_has_state",
+              "state": "hyper_mode"
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "bolmeteus_reverse_dragon_enter_lock",
+            "label": "Opponent creatures cannot attack or block",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "temporary_combat_restriction",
+                "scope": "opponent_creatures",
+                "restrictions": [
+                  "attack",
+                  "block"
+                ],
+                "duration": {
+                  "type": "until_start_of_controller_turn"
+                }
+              }
+            ]
+          }
+        ],
+        "replacement": [
+          {
+            "ability_id": "shield_break_bottom_deck_replacement",
+            "type": "shield_break",
+            "attempt": {
+              "event": "shield_break_attempt",
+              "breaker": {
+                "ref": "source"
+              }
+            },
+            "active_if": {
+              "type": "source_has_state",
+              "state": "hyper_mode"
+            },
+            "replace_with": {
+              "cancel_event": true,
+              "actions": [
+                {
+                  "type": "move_event_card",
+                  "card": {
+                    "ref": "event.shield_card"
+                  },
+                  "from_zone": "shield",
+                  "to_zone": "deck",
+                  "reason": "shield_break_replacement",
+                  "apply_replacements": false
+                }
+              ]
+            },
+            "after_replacement_batch": {
+              "effects": [
+                {
+                  "type": "draw",
+                  "player": "each_player",
+                  "amount": {
+                    "ref": "replacement_count"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "test.hyper_bolmeteus": {
+      "kind": "creature",
+      "name_ja": "テスト・ハイパーボルメテウス",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 7000,
+      "hyper_power": 11000,
+      "race_ja": "テスト",
+      "special_types": [
+        "dream",
+        "hyper_mode"
+      ],
+      "abilities": {
+        "keyword": [
+          "z_rush",
+          "triple_breaker_hyper"
+        ],
+        "replacement": [
+          {
+            "ability_id": "shield_break_bottom_deck_replacement",
+            "type": "shield_break",
+            "attempt": {
+              "event": "shield_break_attempt",
+              "breaker": {
+                "ref": "source"
+              }
+            },
+            "active_if": {
+              "type": "source_has_state",
+              "state": "hyper_mode"
+            },
+            "replace_with": {
+              "cancel_event": true,
+              "actions": [
+                {
+                  "type": "move_event_card",
+                  "card": {
+                    "ref": "event.shield_card"
+                  },
+                  "from_zone": "shield",
+                  "to_zone": "deck",
+                  "reason": "shield_break_replacement",
+                  "apply_replacements": false
+                }
+              ]
+            },
+            "after_replacement_batch": {
+              "effects": [
+                {
+                  "type": "draw",
+                  "player": "each_player",
+                  "amount": {
+                    "ref": "replacement_count"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "test.entry_combat_lock": {
+      "kind": "creature",
+      "name_ja": "テスト・登場制限",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "entry_combat_lock_enter_battle_trigger",
+            "label": "Opponent creatures cannot attack or block",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "temporary_combat_restriction",
+                "scope": "opponent_creatures",
+                "restrictions": [
+                  "attack",
+                  "block"
+                ],
+                "duration": {
+                  "type": "until_start_of_controller_turn"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.draw_watcher_discard": {
+      "kind": "creature",
+      "name_ja": "テスト・ドロー監視ハンデス",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "draw_watcher_discard_trigger",
+            "label": "Discard when you draw",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "any"
+            },
+            "condition": {
+              "type": "event_zone_change_matches",
+              "player": "controller",
+              "from_zone": "deck",
+              "to_zone": "hand",
+              "reason": {
+                "in": [
+                  "draw",
+                  "replacement_draw"
+                ]
+              }
+            },
+            "active_zones": [
+              "battle"
+            ],
+            "effects": [
+              {
+                "effect_id": "discard",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.unblockable_untouchable": {
+      "kind": "creature",
+      "name_ja": "テスト・ブロック不能不可選",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 7000,
+      "race_ja": "テスト",
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "double_breaker",
+          "unblockable and untouchable"
+        ]
+      }
+    },
+    "test.summon_draw": {
+      "kind": "creature",
+      "name_ja": "テスト・召喚ドロー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "summon_draw_enter_battle_trigger",
+            "label": "Draw when this creature enters",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "draw",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.loop_draw_creature": {
+      "kind": "creature",
+      "name_ja": "DrawCreature",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "loop_draw_creature_enter_draw",
+            "label": "DrawCreature enter draw",
+            "ignore_source_continuity": true,
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "draw",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.loop_destroy_all_creature": {
+      "kind": "creature",
+      "name_ja": "DestroyAllCreature",
+      "cost": 1,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "loop_destroy_all_creature_enter_destroy_all",
+            "label": "DestroyAllCreature enter destroy all",
+            "ignore_source_continuity": true,
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "type": "select",
+                "candidates": "own_creatures",
+                "count": "all",
+                "optional": false,
+                "store_as": "creatures_to_destroy",
+                "prompt": "Choose all creatures to destroy"
+              },
+              {
+                "effect_id": "destroy_multiple",
+                "source": "creatures_to_destroy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.loop_revive_two_creature_1": {
+      "kind": "creature",
+      "name_ja": "ReviveTwoCreature1",
+      "cost": 1,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "loop_revive_two_creature_1_enter_revive_two",
+            "label": "ReviveTwoCreature1 enter revive two",
+            "ignore_source_continuity": true,
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "put_creature_from_zone",
+                "from_zone": "graveyard",
+                "amount": 2,
+                "selection": "choose",
+                "optional": false,
+                "prompt": "Choose revived creature"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.loop_revive_two_creature_2": {
+      "kind": "creature",
+      "name_ja": "ReviveTwoCreature2",
+      "cost": 1,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "loop_revive_two_creature_2_enter_revive_two",
+            "label": "ReviveTwoCreature2 enter revive two",
+            "ignore_source_continuity": true,
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "put_creature_from_zone",
+                "from_zone": "graveyard",
+                "amount": 2,
+                "selection": "choose",
+                "optional": false,
+                "prompt": "Choose revived creature"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.turn_start_draw": {
+      "kind": "creature",
+      "name_ja": "テスト・ターン開始ドロー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1500,
+      "race_ja": "テスト",
+      "abilities": {
+        "keyword": [
+          "draw_on_turn_start"
+        ]
+      }
+    },
+    "test.turn_end_draw": {
+      "kind": "creature",
+      "name_ja": "テスト・ターン終了ドロー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1500,
+      "race_ja": "テスト",
+      "abilities": {
+        "keyword": [
+          "draw_on_turn_end"
+        ]
+      }
+    },
+    "test.loot": {
+      "kind": "creature",
+      "name_ja": "テスト・ルーター",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "loot_enter_battle_trigger",
+            "label": "Draw 2 then discard 1",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "packaged",
+                "effects": [
+                  {
+                    "effect_id": "draw",
+                    "amount": 2
+                  },
+                  {
+                    "effect_id": "discard",
+                    "amount": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.aqua": {
+      "kind": "creature",
+      "name_ja": "アクア・テスト",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "リキッド・ピープル",
+      "abilities": {
+        "keyword": [
+          "w_breaker",
+          "blocker",
+          "speed_attacker",
+          "mach_fighter",
+          "shield_trigger"
+        ],
+        "triggered": [
+          {
+            "ability_id": "aqua_enter_battle_power",
+            "label": "Gain power when this creature enters",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "power_modifier_self",
+                "amount": 2000
+              }
+            ]
+          },
+          {
+            "ability_id": "aqua_enter_battle_loot",
+            "label": "Draw 2 then discard 1",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "packaged",
+                "effects": [
+                  {
+                    "effect_id": "draw",
+                    "amount": 2
+                  },
+                  {
+                    "effect_id": "discard",
+                    "amount": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "replacement": [
+          {
+            "ability_id": "aqua_battle_to_hand_replacement",
+            "type": "zone_change",
+            "attempt": {
+              "event": "zone_change_attempt",
+              "card": {
+                "ref": "source"
+              },
+              "from_zone": "battle",
+              "to_zone": "graveyard"
+            },
+            "replace_with": {
+              "to_zone": "hand"
+            }
+          }
+        ]
+      }
+    },
+    "test.mach_fighter": {
+      "kind": "creature",
+      "name_ja": "テスト・マッハファイター",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 2000,
+      "race_ja": "テスト",
+      "abilities": {
+        "keyword": [
+          "mach_fighter"
+        ]
+      }
+    },
+    "test.loot_on_summon": {
+      "kind": "creature",
+      "name_ja": "テスト・召喚ルーター",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "loot_on_summon_enter_battle_trigger",
+            "label": "Draw 2 then discard 1",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "packaged",
+                "effects": [
+                  {
+                    "effect_id": "draw",
+                    "amount": 2
+                  },
+                  {
+                    "effect_id": "discard",
+                    "amount": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.multi_event_draw": {
+      "kind": "creature",
+      "name_ja": "テスト・複数イベントドロー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "multi_event_draw_trigger",
+            "label": "Draw on summon or attack",
+            "trigger": {
+              "type": [
+                "enter_battle",
+                "attack_declared"
+              ],
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "packaged",
+                "effects": [
+                  {
+                    "effect_id": "draw",
+                    "amount": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.look_reveal_bounce": {
+      "kind": "creature",
+      "name_ja": "テスト・見て公開バウンス",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "race_ja": "テスト",
+      "abilities": {
+        "triggered": [
+          {
+            "ability_id": "look_reveal_bounce_trigger",
+            "label": "Look 5 reveal and maybe bounce",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "packaged",
+                "effects": [
+                  {
+                    "effect_id": "look_top_choose_to_hand",
+                    "amount": 5,
+                    "optional": true,
+                    "store_as": "revealed_card"
+                  },
+                  {
+                    "effect_id": "reveal",
+                    "source": "stored",
+                    "store_key": "revealed_card"
+                  },
+                  {
+                    "effect_id": "if_stored_card_matches",
+                    "key": "revealed_card",
+                    "condition": {
+                      "type": "creature",
+                      "civilization": "water",
+                      "min_cost": 2
+                    },
+                    "effects": [
+                      {
+                        "effect_id": "select_then",
+                        "candidates": "creatures",
+                        "prompt": "Choose a creature to return to hand",
+                        "optional": true,
+                        "filter": {
+                          "type": "creature",
+                          "max_cost": {
+                            "from": "stored",
+                            "key": "revealed_card",
+                            "field": "creature_cost"
+                          }
+                        },
+                        "effect": {
+                          "effect_id": "bounce"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "test.aqua_draw": {
+      "kind": "spell",
+      "name_ja": "アクア・ドロー",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "draw",
+          "amount": 1
+        }
+      ]
+    },
+    "test.water_spell_cost_3": {
+      "kind": "spell",
+      "name_ja": "水呪文コスト3",
+      "cost": 3,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "draw",
+          "amount": 1
+        }
+      ]
+    },
+    "test.water_spell_cost_5": {
+      "kind": "spell",
+      "name_ja": "水呪文コスト5",
+      "cost": 5,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "draw",
+          "amount": 1
+        }
+      ]
+    },
+    "test.water_spell_cost_6": {
+      "kind": "spell",
+      "name_ja": "水呪文コスト6",
+      "cost": 6,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "draw",
+          "amount": 1
+        }
+      ]
+    },
+    "test.fire_spell_cost_5": {
+      "kind": "spell",
+      "name_ja": "火呪文コスト5",
+      "cost": 5,
+      "civilizations": [
+        "fire"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "draw",
+          "amount": 1
+        }
+      ]
+    },
+    "test.fire_spell_cost_6": {
+      "kind": "spell",
+      "name_ja": "火呪文コスト6",
+      "cost": 6,
+      "civilizations": [
+        "fire"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "draw",
+          "amount": 1
+        }
+      ]
+    },
+    "test.self_bounce": {
+      "kind": "spell",
+      "name_ja": "セルフ・バウンス",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ]
+      },
+      "effects": [
+        {
+          "id": "bounce_own_creature"
+        }
+      ]
+    },
+    "test.self_bounce_card": {
+      "kind": "spell",
+      "name_ja": "セルフ・バウンスカード",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "bounce_own_battle_card"
+        }
+      ]
+    },
+    "test.bounce_draw_equal_cost": {
+      "kind": "spell",
+      "name_ja": "バウンス同コストドロー",
+      "cost": 4,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "packaged",
+          "label": "Bounce then draw equal to cost",
+          "effects": [
+            {
+              "id": "select_then",
+              "candidates": "opponent_creatures",
+              "prompt": "Choose an opponent creature to return to hand",
+              "optional": false,
+              "store_as": "bounced_creature",
+              "filter": {
+                "type": "creature"
+              },
+              "effect": {
+                "id": "bounce"
+              }
+            },
+            {
+              "id": "draw",
+              "amount": {
+                "from": "stored",
+                "key": "bounced_creature",
+                "field": "creature_cost"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "test.aqua_bounce": {
+      "kind": "spell",
+      "name_ja": "アクア・バウンス",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ]
+      },
+      "effects": [
+        {
+          "id": "bounce_opponent_creature"
+        }
+      ]
+    },
+    "test.bounce_opponent_card": {
+      "kind": "spell",
+      "name_ja": "相手カードバウンス",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {},
+      "effects": [
+        {
+          "id": "bounce_opponent_battle_card"
+        }
+      ]
+    },
+    "test.aqua_power_down": {
+      "kind": "spell",
+      "name_ja": "アクア・パワーダウン",
+      "cost": 1,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ]
+      },
+      "effects": [
+        {
+          "id": "power_modifier_opponent_creature",
+          "amount": -3000
+        }
+      ]
+    },
+    "test.aqua_twinpact": {
+      "kind": "twinpact",
+      "name_ja": "アクア・テスト / アクア・ドロー",
+      "creature": {
+        "kind": "creature",
+        "name_ja": "アクア・テスト",
+        "cost": 1,
+        "civilizations": [
+          "water"
+        ],
+        "power": 1000,
+        "race_ja": "リキッド・ピープル",
+        "abilities": {
+          "keyword": [
+            "w_breaker",
+            "blocker",
+            "speed_attacker",
+            "mach_fighter",
+            "shield_trigger"
+          ],
+          "triggered": [
+            {
+              "ability_id": "aqua_twinpact_enter_battle_power",
+              "label": "Gain power when this creature enters",
+              "trigger": {
+                "type": "enter_battle",
+                "card": {
+                  "ref": "source"
+                }
+              },
+              "effects": [
+                {
+                  "effect_id": "power_modifier_self",
+                  "amount": 2000
+                }
+              ]
+            },
+            {
+              "ability_id": "aqua_twinpact_enter_battle_loot",
+              "label": "Draw 2 then discard 1",
+              "trigger": {
+                "type": "enter_battle",
+                "card": {
+                  "ref": "source"
+                }
+              },
+              "effects": [
+                {
+                  "effect_id": "packaged",
+                  "effects": [
+                    {
+                      "effect_id": "draw",
+                      "amount": 2
+                    },
+                    {
+                      "effect_id": "discard",
+                      "amount": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "replacement": [
+            {
+              "ability_id": "aqua_twinpact_battle_to_hand_replacement",
+              "type": "zone_change",
+              "attempt": {
+                "event": "zone_change_attempt",
+                "card": {
+                  "ref": "source"
+                },
+                "from_zone": "battle",
+                "to_zone": "graveyard"
+              },
+              "replace_with": {
+                "to_zone": "hand"
+              }
+            }
+          ]
+        }
+      },
+      "spell": {
+        "kind": "spell",
+        "name_ja": "アクア・ドロー",
+        "cost": 1,
+        "civilizations": [
+          "water"
+        ],
+        "abilities": {},
+        "effects": [
+          {
+            "id": "draw",
+            "amount": 1
+          }
+        ]
+      }
+    }
+  }
+}

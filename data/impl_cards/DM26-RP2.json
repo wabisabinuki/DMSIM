@@ -1,0 +1,5580 @@
+{
+  "cards": {
+    "dm26-rp2.DMR.DM1/DM1": {
+      "name_ja": "烈しき切札 ドギラゴン逆",
+      "kind": "creature",
+      "special_types": [
+        "dream"
+      ],
+      "cost": 8,
+      "civilizations": [
+        "light",
+        "nature"
+      ],
+      "power": 15000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilizations": [
+                "light",
+                "nature"
+              ],
+              "power": {
+                "gte": 8000
+              }
+            }
+          },
+          "blocker",
+          "mach_fighter",
+          "t_breaker",
+          {
+            "ability_id": "extreme_final_revolution",
+            "label": "極限ファイナル革命：このクリーチャーが出た時、このゲーム中に他の「ファイナル革命」を使っていなければ、次の自分のターンのはじめまで、自分はゲームに負けず、相手のカードの効果によって、自分のクリーチャーは離れない。",
+            "effects": [
+              {
+                "effect_id": "prevent_loss",
+                "duration": "until_start_of_controller_turn"
+              },
+              {
+                "effect_id": "opponent_effect_separation_guard",
+                "duration": "until_start_of_controller_turn"
+              }
+            ]
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "dogiragon_gyaku_turn_end_accel",
+            "label": "自分のターンの終わりに、自分の山札の上から2枚をマナゾーンに置いてもよい。その後、コストの合計が7以下になるように、クリーチャーを2体まで自分の手札またはマナゾーンから出す。",
+            "trigger": {
+              "event": "turn_end",
+              "subject": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "move_deck_top",
+                "amount": 2,
+                "to_zone": "mana",
+                "optional": true,
+                "prompt": "山札の上から2枚をマナゾーンに置きますか？"
+              },
+              {
+                "effect_id": "summon_within_total_cost",
+                "from_zones": [
+                  "hand",
+                  "mana"
+                ],
+                "filter": {
+                  "card_type": "creature"
+                },
+                "max_count": 2,
+                "max_total_cost": 7,
+                "prompt": "コストの合計が7以下になるようにクリーチャーを2体まで出す"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.OR.OR1/OR1": {
+      "name_ja": "燃える禁断 ドルマゲドンW",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "darkness",
+        "fire"
+      ],
+      "power": 999999,
+      "abilities": {
+        "keyword": [
+          "t_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "dolmageddon_w_enter_discard_draw_seal",
+            "label": "このクリーチャーが出た時、自分の手札を1枚捨て、カードを2枚引く。その後、このクリーチャーに封印を4つ付ける。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "discard",
+                "amount": 1,
+                "optional": false
+              },
+              {
+                "effect_id": "draw",
+                "amount": 2
+              },
+              {
+                "effect_id": "attach_seal",
+                "target": {
+                  "ref": "source"
+                },
+                "amount": 4
+              }
+            ]
+          },
+          {
+            "ability_id": "dolmageddon_w_attack_seal_opponent_creature",
+            "label": "このクリーチャーが攻撃する時、相手のクリーチャーを1体選び、相手はそれに封印を1つ付ける。",
+            "trigger": {
+              "type": "attack_declared",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "optional": false,
+                "prompt": "封印を1つ付ける相手のクリーチャーを1体選ぶ",
+                "effect": {
+                  "effect_id": "attach_seal",
+                  "amount": 1,
+                  "seal_player": "target_owner"
+                }
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S1/S11": {
+      "name_ja": "「業流」の頂 ゾロ・ア・スタート",
+      "kind": "creature",
+      "cost": 13,
+      "civilizations": [
+        "zero"
+      ],
+      "power": 33333,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "label": "革命チェンジ：パワー12000以上のクリーチャー",
+            "attack_creature": {
+              "power": {
+                "gte": 12000
+              }
+            }
+          },
+          "world_breaker",
+          {
+            "ability_id": "eternal_omega",
+            "label": "エターナル・Ω（このクリーチャーが離れる時、かわりに手札に戻す）"
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": [
+          {
+            "ability_id": "super_dimension_redirect",
+            "label": "相手のターンに相手のクリーチャーが超次元ゾーン以外から出る時、かわりにそれを相手の超次元ゾーンに置く。次の相手のターンのはじめに、相手はそのクリーチャーを超次元ゾーンから出す。"
+          }
+        ]
+      }
+    },
+    "dm26-rp2.SR.S2/S11": {
+      "name_ja": "天V王 エバーラスト",
+      "kind": "creature",
+      "cost": 7,
+      "civilizations": [
+        "light"
+      ],
+      "power": 12000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "t_breaker"
+        ],
+        "static": [
+          {
+            "ability_id": "everlast_mana_armor_cost_reduction",
+            "type": "cost_modifier",
+            "label": "マナ武装 3：自分のマナゾーンに光のカードが3枚以上あれば、このクリーチャーの召喚コストを2少なくする。",
+            "applies_to": {
+              "card": "self",
+              "from_zone": "hand"
+            },
+            "modifier": {
+              "amount": -2,
+              "min_cost": 1
+            },
+            "condition": {
+              "type": "mana_armor",
+              "civilization": "light",
+              "count": 3
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "everlast_enter_or_attack_shield",
+            "label": "このクリーチャーが出た時または攻撃する時、エレメントを1つ選び、シールド化してもよい。そうしなければ、自分の山札の上から1枚をシールド化してもよい。",
+            "trigger": {
+              "type": [
+                "enter_battle",
+                "attack_declared"
+              ],
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "packaged",
+                "effects": [
+                  {
+                    "effect_id": "select_then",
+                    "candidates": "battle_zone",
+                    "filter": {
+                      "card_type": "element"
+                    },
+                    "optional": true,
+                    "prompt": "シールド化するエレメントを1つ選ぶ",
+                    "effect": {
+                      "effect_id": "move_card",
+                      "from_zone": "battle",
+                      "to_zone": "shield",
+                      "face_options": [
+                        "face_down"
+                      ],
+                      "reason": "everlast_element_to_shield"
+                    }
+                  },
+                  {
+                    "effect_id": "add_deck_to_shield",
+                    "amount": 1,
+                    "optional": true,
+                    "face_options": [
+                      "face_down"
+                    ],
+                    "connector": "otherwise"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": [
+          {
+            "ability_id": "everlast_mana_armor_leave_replacement",
+            "type": "zone_change",
+            "label": "マナ武装 5：自分のクリーチャーが離れる時、自分のマナゾーンに光のカードが5枚以上あれば、かわりに自分のシールドを2つ手札に加えてもよい。その「S・トリガー」は使えない。",
+            "attempt": {
+              "event": "zone_change_attempt",
+              "card_filter": {
+                "card_type": "creature",
+                "controller": "controller"
+              },
+              "from_zone": "battle",
+              "to_zone": {
+                "ne": "battle"
+              }
+            },
+            "active_if": {
+              "type": "and",
+              "conditions": [
+                {
+                  "type": "source_zone_is",
+                  "zone": "battle"
+                },
+                {
+                  "type": "mana_armor",
+                  "civilization": "light",
+                  "count": 5
+                },
+                {
+                  "type": "player_zone_count",
+                  "player": "controller",
+                  "zone": "shield",
+                  "op": "gte",
+                  "value": 2
+                }
+              ]
+            },
+            "optional": true,
+            "prompt": "自分のシールドを2つ手札に加えて、離れるかわりにしますか？",
+            "replace_with": {
+              "cancel_event": true,
+              "effects": [
+                {
+                  "effect_id": "add_shield_to_hand",
+                  "target": "own_shields",
+                  "amount": 2,
+                  "optional": false,
+                  "disable_s_trigger": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "dm26-rp2.SR.S3/S11": {
+      "name_ja": "龍V王 Q.E.D.",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "water"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "just_diver",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "qed_enter_distinct_types",
+            "label": "このクリーチャーが出た時、自分の山札の上から5枚を表向きにする。その中から、異なるカードタイプを持つカードを好きな数選び、手札に加える。残りを好きな順序で山札の下に置く。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "look_top_choose_distinct_types_to_hand",
+                "amount": 5,
+                "optional": true,
+                "prompt": "手札に加える異なるカードタイプのカードを選ぶ"
+              }
+            ]
+          },
+          {
+            "ability_id": "qed_leave_execute_non_creature",
+            "label": "このクリーチャーが離れた時、コスト6以下の、クリーチャーではないカードを1枚、自分の手札からコストを支払わずに実行してもよい。",
+            "ignore_source_continuity": true,
+            "active_zones": "any",
+            "trigger": {
+              "type": "zone_change",
+              "card": {
+                "ref": "source"
+              },
+              "from_zone": "battle"
+            },
+            "effects": [
+              {
+                "effect_id": "execute_card_from_zone",
+                "from_zone": "hand",
+                "card_type": "non_creature",
+                "max_cost": 6,
+                "optional": true,
+                "ignore_cost": true,
+                "prompt": "コスト6以下のクリーチャーではないカードを手札から実行しますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S4/S11": {
+      "name_ja": "魔V王 デスシラズ",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 3,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "evolution",
+            "source_zone": "graveyard",
+            "civilizations": [
+              "darkness"
+            ],
+            "label": "墓地進化：自分の墓地にある闇のクリーチャー1体の上に重ねつつ出す。"
+          },
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "deathshirazu_turn_start_mill",
+            "label": "自分のターンのはじめに、自分の山札の上から2枚を墓地に置いてもよい。",
+            "trigger": {
+              "type": "turn_start",
+              "player": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "mill",
+                "target": "own_deck",
+                "amount": 2,
+                "optional": true,
+                "prompt": "山札の上から2枚を墓地に置きますか？"
+              }
+            ]
+          },
+          {
+            "ability_id": "deathshirazu_leave_destroy_all",
+            "label": "このクリーチャーが離れた時、自分の墓地にカードが13枚以上あれば、相手のクリーチャーをすべて破壊する。",
+            "ignore_source_continuity": true,
+            "active_zones": "any",
+            "trigger": {
+              "type": "zone_change",
+              "card": {
+                "ref": "source"
+              },
+              "from_zone": "battle"
+            },
+            "condition": {
+              "type": "card_count_matches",
+              "from": {
+                "player": "controller",
+                "zone": "graveyard"
+              },
+              "op": "gte",
+              "value": 13
+            },
+            "effects": [
+              {
+                "effect_id": "gather_matching",
+                "candidates": "opponent_creatures",
+                "filter": {
+                  "card_type": "creature"
+                },
+                "store_as": "deathshirazu_targets"
+              },
+              {
+                "effect_id": "destroy_multiple",
+                "source": "deathshirazu_targets",
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S5/S11": {
+      "name_ja": "熱血V龍 ガイギンガ",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 6000,
+      "abilities": {
+        "keyword": [
+          "speed_attacker",
+          "w_breaker",
+          {
+            "ability_id": "power_attacker",
+            "amount": 4000
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "gaiginga_reveal_top",
+            "label": "このクリーチャーが出た時または攻撃する時、自分の山札の上から1枚を表向きにしてもよい。それがコスト4以下のエレメントなら出してもよい。こうして出さなければ、それを手札に加える。",
+            "trigger": {
+              "type": [
+                "enter_battle",
+                "attack_declared"
+              ],
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "reveal_cards",
+                "from_zone": "deck",
+                "target_player": "self",
+                "amount": 1,
+                "from": "top",
+                "optional": true,
+                "prompt": "山札の上から1枚を表向きにしますか？",
+                "store_as": "gaiginga_revealed_card"
+              },
+              {
+                "type": "if",
+                "condition": {
+                  "type": "card_matches",
+                  "card": {
+                    "ref": "gaiginga_revealed_card"
+                  },
+                  "filter": {
+                    "card_type": "element",
+                    "cost": {
+                      "lte": 4
+                    }
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "put_creature_from_zone",
+                    "from_zone": "deck",
+                    "target_player": "self",
+                    "selection": "top",
+                    "optional": true,
+                    "filter": {
+                      "card_type": "element",
+                      "cost": {
+                        "lte": 4
+                      }
+                    },
+                    "prompt": "コスト4以下のエレメントを出しますか？",
+                    "reason": "gaiginga_play_revealed"
+                  }
+                ]
+              },
+              {
+                "type": "if",
+                "condition": {
+                  "type": "card_matches",
+                  "card": {
+                    "ref": "gaiginga_revealed_card"
+                  },
+                  "filter": {
+                    "zone": "deck"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "move_card",
+                    "from_zone": "deck",
+                    "to_zone": "hand",
+                    "target_player": "self",
+                    "selection": "top",
+                    "optional": false,
+                    "reason": "gaiginga_revealed_to_hand"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ability_id": "gaiginga_extra_turn",
+            "label": "相手がこのクリーチャーを選んだ時、このターンの後に自分のターンを追加する。",
+            "trigger": {
+              "type": "card_chosen",
+              "card": {
+                "ref": "source"
+              },
+              "player": "opponent"
+            },
+            "effects": [
+              {
+                "effect_id": "grant_extra_turn",
+                "target_player": "self"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S6/S11": {
+      "name_ja": "永遠の絆",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 3,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 9000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_zero",
+            "civilization": "nature",
+            "label": "革命0トリガー：クリーチャーが自分を攻撃する時、自分のシールドが1つもなければ、このクリーチャーを手札から表向きにしてもよい。そうしたら、自分の山札の上から1枚を表向きにする。それが自然の、進化ではないクリーチャーなら出し、このクリーチャーをその上に置く。"
+          },
+          {
+            "ability_id": "evolution",
+            "civilizations": [
+              "nature"
+            ],
+            "label": "進化：自然のクリーチャー1体の上に置く。"
+          },
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "eien_kizuna_enter_mana",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "optional": false,
+                "prompt": "持ち主のマナゾーンに置く相手のクリーチャーを1体選ぶ",
+                "effect": {
+                  "effect_id": "move_card",
+                  "from_zone": "battle",
+                  "to_zone": "mana"
+                }
+              }
+            ],
+            "label": "このクリーチャーが出た時、相手のクリーチャーを1体選び、持ち主のマナゾーンに置く。"
+          },
+          {
+            "ability_id": "eien_kizuna_attack_mana",
+            "trigger": {
+              "type": "attack_declared",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "optional": false,
+                "prompt": "持ち主のマナゾーンに置く相手のクリーチャーを1体選ぶ",
+                "effect": {
+                  "effect_id": "move_card",
+                  "from_zone": "battle",
+                  "to_zone": "mana"
+                }
+              }
+            ],
+            "label": "このクリーチャーが攻撃する時、相手のクリーチャーを1体選び、持ち主のマナゾーンに置く。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S7/S11": {
+      "name_ja": "時の団長 ミラダンテ槍",
+      "kind": "creature",
+      "cost": 8,
+      "civilizations": [
+        "light",
+        "water"
+      ],
+      "power": 13500,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilizations": [
+                "light",
+                "water"
+              ],
+              "power": {
+                "gte": 8000
+              }
+            }
+          },
+          "t_breaker",
+          "escape",
+          {
+            "ability_id": "final_revolution",
+            "label": "ファイナル革命：相手のクリーチャーをすべてタップする。その後、相手のタップしているクリーチャー1体につき、カードを1枚引いてもよい。",
+            "effects": [
+              {
+                "effect_id": "gather_matching",
+                "candidates": "opponent_creatures",
+                "filter": {
+                  "card_type": "creature"
+                },
+                "store_as": "miradante_yari_creatures"
+              },
+              {
+                "effect_id": "for_each_stored",
+                "source": "miradante_yari_creatures",
+                "effect": {
+                  "effect_id": "tap"
+                }
+              },
+              {
+                "effect_id": "count_matching",
+                "source": "miradante_yari_creatures",
+                "filter": {
+                  "tapped": true
+                },
+                "store_as": "miradante_yari_tapped_count"
+              },
+              {
+                "effect_id": "draw",
+                "amount": {
+                  "from": "stored",
+                  "key": "miradante_yari_tapped_count"
+                },
+                "optional": true,
+                "prompt": "ファイナル革命：何枚引きますか？"
+              }
+            ]
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "miradante_yari_enter_attack_lock",
+            "label": "相手のクリーチャーが出た時、次の自分のターンのはじめまで、そのクリーチャーは攻撃できない。",
+            "trigger": {
+              "event": "enter_battle",
+              "subject": "opponent",
+              "filter": {
+                "card_type": "creature"
+              }
+            },
+            "effects": [
+              {
+                "type": "temporary_combat_restriction",
+                "target": {
+                  "ref": "event.card"
+                },
+                "restrictions": [
+                  "attack"
+                ],
+                "duration": "until_start_of_controller_turn"
+              }
+            ]
+          },
+          {
+            "ability_id": "miradante_yari_untap_attack_lock",
+            "label": "相手のクリーチャーがアンタップした時、次の自分のターンのはじめまで、そのクリーチャーは攻撃できない。",
+            "trigger": {
+              "event": "untap",
+              "subject": "opponent",
+              "filter": {
+                "card_type": "creature"
+              }
+            },
+            "effects": [
+              {
+                "type": "temporary_combat_restriction",
+                "target": {
+                  "ref": "event.card"
+                },
+                "restrictions": [
+                  "attack"
+                ],
+                "duration": "until_start_of_controller_turn"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S8/S11": {
+      "name_ja": "百族の団長 プチョヘンザ斧",
+      "kind": "creature",
+      "cost": 10,
+      "civilizations": [
+        "light",
+        "nature"
+      ],
+      "power": 22500,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilizations": [
+                "light",
+                "nature"
+              ],
+              "power": {
+                "gte": 12000
+              }
+            }
+          },
+          "mach_fighter",
+          "super_guardman",
+          "q_breaker",
+          {
+            "ability_id": "final_revolution",
+            "label": "ファイナル革命：このクリーチャーよりパワーが小さい相手のクリーチャーをすべて持ち主のマナゾーンに置く。",
+            "effects": [
+              {
+                "effect_id": "gather_matching",
+                "candidates": "opponent_creatures",
+                "filter": {
+                  "card_type": "creature",
+                  "power": {
+                    "lt": {
+                      "ref": "source.power"
+                    }
+                  }
+                },
+                "store_as": "pucho_targets"
+              },
+              {
+                "effect_id": "for_each_stored",
+                "source": "pucho_targets",
+                "effect": {
+                  "effect_id": "move_card",
+                  "to_zone": "mana"
+                }
+              }
+            ]
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "pucho_axe_attack_end_distribute",
+            "label": "このクリーチャーの攻撃の終わりに、自分の山札の上から3枚を見る。その中から、エレメントを最大1つ出し、1枚をシールド化し、残りをマナゾーンに置く。",
+            "trigger": {
+              "event": "attack_ended",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "look_then_distribute",
+                "amount": 3,
+                "buckets": [
+                  {
+                    "to_zone": "battle",
+                    "max": 1,
+                    "optional": true,
+                    "filter": {
+                      "card_type": "element"
+                    },
+                    "prompt": "出すエレメントを最大1つ選ぶ"
+                  },
+                  {
+                    "to_zone": "shield",
+                    "count": 1,
+                    "prompt": "シールド化するカードを1枚選ぶ"
+                  }
+                ],
+                "remainder_zone": "mana"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S9/S11": {
+      "name_ja": "完璧団長 オーパーツ銃",
+      "kind": "creature",
+      "cost": 8,
+      "civilizations": [
+        "water",
+        "darkness"
+      ],
+      "power": 13000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilizations": [
+                "water",
+                "darkness"
+              ],
+              "power": {
+                "gte": 8000
+              }
+            }
+          },
+          "just_diver",
+          "t_breaker",
+          {
+            "ability_id": "final_revolution",
+            "label": "ファイナル革命：数字を1つ選ぶ。その数字と同じコストの相手のエレメントをすべて破壊する。",
+            "effects": [
+              {
+                "type": "choose_number",
+                "min": 0,
+                "max": 20,
+                "store_as": "opaatsu_cost",
+                "prompt": "破壊する相手のエレメントのコストを選ぶ"
+              },
+              {
+                "effect_id": "gather_matching",
+                "candidates": "opponent_elements",
+                "filter": {
+                  "card_type": "element",
+                  "cost": {
+                    "eq": {
+                      "ref": "opaatsu_cost"
+                    }
+                  }
+                },
+                "store_as": "opaatsu_targets"
+              },
+              {
+                "effect_id": "destroy_multiple",
+                "source": "opaatsu_targets"
+              },
+              {
+                "effect_id": "cost_execution_lock",
+                "affected_player": "opponent",
+                "cost": {
+                  "ref": "opaatsu_cost"
+                },
+                "duration": "until_start_of_controller_turn"
+              }
+            ]
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "opaatsu_gun_opponent_graveyard_draw",
+            "label": "カードがどこからでも相手の墓地に置かれた時、カードを1枚引いてもよい。",
+            "trigger": {
+              "event": "zone_change",
+              "to_zone": "graveyard",
+              "subject": "opponent"
+            },
+            "effects": [
+              {
+                "effect_id": "draw",
+                "amount": 1,
+                "optional": true,
+                "prompt": "オーパーツ銃：カードを1枚引きますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S10/S11": {
+      "name_ja": "傷だらけの革命 スカーレッドゾーン",
+      "kind": "creature",
+      "cost": 8,
+      "civilizations": [
+        "darkness",
+        "fire"
+      ],
+      "power": 13000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": [
+                "darkness",
+                "fire"
+              ],
+              "power": {
+                "gte": 8000
+              }
+            }
+          },
+          "t_breaker"
+        ],
+        "static": [
+          {
+            "ability_id": "scarred_redzone_command_speed_attacker",
+            "type": "grant_rule",
+            "label": "自分のコマンドすべてに「スピードアタッカー」を与える。",
+            "rule": {
+              "scope": "own_creatures",
+              "filter": {
+                "race_ja": "コマンド"
+              },
+              "ability": {
+                "ability_id": "speed_attacker"
+              }
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "scarred_redzone_enter_mill",
+            "label": "このクリーチャーが出た時、自分の山札の上から3枚を墓地に置いてもよい。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "mill",
+                "target": "own_deck",
+                "amount": 3,
+                "optional": true,
+                "prompt": "山札の上から3枚を墓地に置きますか？"
+              }
+            ]
+          },
+          {
+            "ability_id": "scarred_redzone_once_revive",
+            "label": "各ターンに1度、コスト5以下のクリーチャーがどこからでも自分の墓地に置かれた時、それを出してもよい。",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "graveyard",
+              "filter": {
+                "card_type": "creature",
+                "cost": {
+                  "lte": 5
+                }
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "once_per_turn_gate",
+                "key": "scarred_redzone_revive"
+              },
+              {
+                "type": "move",
+                "card": {
+                  "ref": "event.card"
+                },
+                "from_zone": "graveyard",
+                "to_zone": "battle",
+                "optional": true,
+                "prompt": "墓地に置かれたコスト5以下のクリーチャーを出しますか？",
+                "reason": "scarred_redzone_revive",
+                "connector": "then"
+              },
+              {
+                "effect_id": "once_per_turn_mark",
+                "key": "scarred_redzone_revive",
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.SR.S11/S11": {
+      "name_ja": "V頂神話 カツムゲン",
+      "kind": "creature",
+      "cost": 8,
+      "civilizations": [
+        "fire",
+        "nature"
+      ],
+      "power": 13000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilizations": [
+                "fire",
+                "nature"
+              ],
+              "power": {
+                "gte": 8000
+              }
+            }
+          },
+          "speed_attacker",
+          "t_breaker",
+          {
+            "ability_id": "battle_or_deck_face_up_infinite_power"
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "katsumugen_costless_enter_battle",
+            "label": "相手のクリーチャーがコストを支払わずに出た時、このクリーチャーとそのクリーチャーをバトルさせてもよい。",
+            "trigger": {
+              "type": "enter_battle",
+              "subject": "opponent",
+              "filter": {
+                "card_type": "creature"
+              }
+            },
+            "condition": {
+              "type": "event_value_matches",
+              "field": "cost_skipped",
+              "op": "eq",
+              "value": true
+            },
+            "effects": [
+              {
+                "type": "choice",
+                "prompt": "カツムゲンと出たクリーチャーをバトルさせますか？",
+                "choices": [
+                  {
+                    "choice_id": "battle",
+                    "label": "バトルさせる",
+                    "effects": [
+                      {
+                        "type": "battle",
+                        "attacker": {
+                          "ref": "source"
+                        },
+                        "defender": {
+                          "ref": "event.card"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "choice_id": "skip",
+                    "label": "何もしない",
+                    "effects": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "ability_id": "katsumugen_battle_win_discard_draw_untap",
+            "label": "このクリーチャーがバトルに勝った時、自分の手札を1枚捨ててもよい。そうしたら、カードを2枚引く。こうしてパワー6000以上のクリーチャーを捨てたら、このクリーチャーをアンタップする。",
+            "trigger": {
+              "type": "battle_won",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "discard",
+                "amount": 1,
+                "optional": true,
+                "store_as": "katsumugen_discarded"
+              },
+              {
+                "effect_id": "draw",
+                "amount": 2,
+                "connector": "then"
+              },
+              {
+                "effect_id": "if_stored_card_matches",
+                "key": "katsumugen_discarded",
+                "condition": {
+                  "card_type": "creature",
+                  "power": {
+                    "gte": 6000
+                  }
+                },
+                "effects": [
+                  {
+                    "effect_id": "untap",
+                    "target": "self"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.1/77": {
+      "name_ja": "極まる九極 Q.9",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 9,
+      "civilizations": [
+        "light"
+      ],
+      "power": 12500,
+      "abilities": {
+        "keyword": [
+          "g_strike",
+          {
+            "ability_id": "soulshift",
+            "label": "ソウルシフト（このクリーチャーの召喚コストを進化元のコストの数だけ少なくする。ただしコストは0以下にならない）"
+          },
+          {
+            "ability_id": "evolution",
+            "civilizations": [
+              "light"
+            ],
+            "label": "進化：光のクリーチャー1体の上に置く。"
+          },
+          "blocker",
+          "t_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "q9_leave_look_top9_put_light_cost9",
+            "label": "このクリーチャーが離れた時、その下にコスト9のクリーチャーがあれば、自分の山札の上から9枚を見る。その中から光のコスト9のクリーチャーを1体出してもよい。残りをシャッフルして山札の下に置く。",
+            "ignore_source_continuity": true,
+            "active_zones": "any",
+            "trigger": {
+              "type": "zone_change",
+              "card": {
+                "ref": "source"
+              },
+              "from_zone": "battle"
+            },
+            "condition": {
+              "type": "card_count_matches",
+              "cards": {
+                "ref": "event.evolution_sources"
+              },
+              "filter": {
+                "type": "creature",
+                "cost": 9
+              },
+              "op": "gte",
+              "value": 1
+            },
+            "effects": [
+              {
+                "effect_id": "look_top_put_creature_to_battle",
+                "amount": 9,
+                "optional": true,
+                "filter": {
+                  "type": "creature",
+                  "civilization": "light",
+                  "cost": 9
+                },
+                "prompt": "光のコスト9のクリーチャーを1体出しますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.2/77": {
+      "name_ja": "神極の絆",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 4,
+      "civilizations": [
+        "light"
+      ],
+      "power": 8500,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_zero",
+            "civilization": "light",
+            "label": "革命0トリガー：クリーチャーが自分を攻撃する時、自分のシールドが1つもなければ、このクリーチャーを手札から表向きにしてもよい。そうしたら、自分の山札の上から1枚を表向きにする。それが光の、進化ではないクリーチャーなら出し、このクリーチャーをその上に置く。"
+          },
+          {
+            "ability_id": "evolution",
+            "civilizations": [
+              "light"
+            ],
+            "label": "進化：光のクリーチャー1体の上に置く。"
+          },
+          "blocker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "shingoku_kizuna_enter_shield",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "add_deck_to_shield",
+                "amount": 1,
+                "optional": false
+              }
+            ],
+            "label": "このクリーチャーが出た時、自分の山札の上から1枚をシールド化する。"
+          },
+          {
+            "ability_id": "shingoku_kizuna_attack_shield",
+            "trigger": {
+              "type": "attack_declared",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "add_deck_to_shield",
+                "amount": 1,
+                "optional": false
+              }
+            ],
+            "label": "このクリーチャーが攻撃する時、自分の山札の上から1枚をシールド化する。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.3/77": {
+      "name_ja": "叛逆の絆",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 4,
+      "civilizations": [
+        "water"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_zero",
+            "civilization": "water",
+            "label": "革命0トリガー：クリーチャーが自分を攻撃する時、自分のシールドが1つもなければ、このクリーチャーを手札から表向きにしてもよい。そうしたら、自分の山札の上から1枚を表向きにする。それが水の、進化ではないクリーチャーなら出し、このクリーチャーをその上に置く。"
+          },
+          {
+            "ability_id": "evolution",
+            "civilizations": [
+              "water"
+            ],
+            "label": "進化：水のクリーチャー1体の上に置く。"
+          },
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "hangyaku_kizuna_enter_attack_top_or_bottom",
+            "label": "このクリーチャーが出た時または攻撃する時、相手のクリーチャーを1体選ぶ。相手はそれを山札の上か下に置く。",
+            "trigger": {
+              "type": "or",
+              "triggers": [
+                {
+                  "type": "enter_battle",
+                  "card": {
+                    "ref": "source"
+                  }
+                },
+                {
+                  "type": "attack_declared",
+                  "attacker": {
+                    "ref": "source"
+                  }
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "select",
+                "candidates": "opponent_creatures",
+                "store_as": "hangyaku_kizuna_target",
+                "optional": false,
+                "prompt": "山札の上か下に置く相手のクリーチャーを1体選ぶ"
+              },
+              {
+                "type": "choice",
+                "selector": "opponent",
+                "prompt": "選ばれたクリーチャーを山札の上か下に置く",
+                "connector": "then",
+                "choices": [
+                  {
+                    "label": "山札の上",
+                    "effects": [
+                      {
+                        "type": "move",
+                        "card": {
+                          "ref": "hangyaku_kizuna_target"
+                        },
+                        "from_zone": "battle",
+                        "to_zone": "deck",
+                        "destination_position": "top",
+                        "reason": "hangyaku_kizuna_to_deck_top"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "山札の下",
+                    "effects": [
+                      {
+                        "type": "move",
+                        "card": {
+                          "ref": "hangyaku_kizuna_target"
+                        },
+                        "from_zone": "battle",
+                        "to_zone": "deck",
+                        "reason": "hangyaku_kizuna_to_deck_bottom"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.4/77": {
+      "name_ja": "熱血の名 修羅丸",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "water"
+      ],
+      "power": 10000,
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ],
+        "static": [
+          {
+            "ability_id": "shuramaru_cannot_attack",
+            "type": "attack_rule",
+            "rule": {
+              "kind": "cannot_attack_unless",
+              "condition": {
+                "type": "not",
+                "condition": {
+                  "type": "always"
+                }
+              }
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "shuramaru_turn_start_power_gachinko",
+            "label": "自分のターンのはじめに、相手とパワー・ガチンコ・ジャッジしてもよい。自分が勝ったら、こうして自分が表向きにしたクリーチャーを山札の下に置くかわりにコストを支払わずに召喚してもよい。こうして召喚したら、このクリーチャーを手札に戻す。",
+            "trigger": {
+              "type": "turn_start",
+              "player": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "power_gachinko_judge",
+                "optional": true,
+                "prompt": "パワー・ガチンコ・ジャッジをしますか？",
+                "store_own_as": "shuramaru_revealed",
+                "defer_own_bottom_on_win": true,
+                "on_win": [
+                  {
+                    "type": "if",
+                    "condition": {
+                      "type": "card_matches",
+                      "card": {
+                        "ref": "shuramaru_revealed"
+                      },
+                      "filter": {
+                        "card_type": "creature",
+                        "zone": "deck"
+                      }
+                    },
+                    "then": [
+                      {
+                        "type": "choice",
+                        "prompt": "表向きにしたクリーチャーを召喚しますか？",
+                        "choices": [
+                          {
+                            "choice_id": "summon",
+                            "label": "召喚する",
+                            "effects": [
+                              {
+                                "type": "execute",
+                                "card": {
+                                  "ref": "shuramaru_revealed"
+                                },
+                                "card_type": "creature",
+                                "ignore_cost": true
+                              },
+                              {
+                                "type": "move",
+                                "card": {
+                                  "ref": "source"
+                                },
+                                "from_zone": "battle",
+                                "to_zone": "hand",
+                                "reason": "shuramaru_return_after_judge_summon",
+                                "connector": "then"
+                              }
+                            ]
+                          },
+                          {
+                            "choice_id": "bottom",
+                            "label": "山札の下に置く",
+                            "effects": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.5/77": {
+      "name_ja": "零黒の絆",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 4,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_zero",
+            "civilization": "darkness",
+            "label": "革命0トリガー：クリーチャーが自分を攻撃する時、自分のシールドが1つもなければ、このクリーチャーを手札から表向きにしてもよい。そうしたら、自分の山札の上から1枚を表向きにする。それが闇の、進化ではないクリーチャーなら出し、このクリーチャーをその上に置く。"
+          },
+          {
+            "ability_id": "evolution",
+            "civilizations": [
+              "darkness"
+            ],
+            "label": "進化：闇のクリーチャー1体の上に置く。"
+          },
+          "blocker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "reikoku_kizuna_enter_minus",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "gather_matching",
+                "candidates": "opponent_creatures",
+                "filter": {
+                  "card_type": "creature"
+                },
+                "store_as": "reikoku_kizuna_targets"
+              },
+              {
+                "effect_id": "for_each_stored",
+                "source": "reikoku_kizuna_targets",
+                "effect": {
+                  "effect_id": "modify_power",
+                  "amount": -4000,
+                  "duration": "until_end_of_turn"
+                }
+              }
+            ],
+            "label": "このクリーチャーが出た時、このターン、相手のクリーチャーすべてのパワーを－4000する。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.6/77": {
+      "name_ja": "不明な不透明 メモッタ",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 6000,
+      "abilities": {
+        "keyword": [
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "memotta_summon_mill_and_revive_sealed",
+            "label": "このクリーチャーが召喚によって出た時、自分の山札の上から3枚を墓地に置く。その後、コストの合計が5以下になるように、進化ではないクリーチャーを2体まで、封印を1つずつ付けて自分の墓地から出す。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              },
+              "reason": "summon"
+            },
+            "effects": [
+              {
+                "effect_id": "mill",
+                "target": "own_deck",
+                "amount": 3,
+                "optional": false
+              },
+              {
+                "effect_id": "revive_within_total_cost_sealed",
+                "from_zones": [
+                  "graveyard"
+                ],
+                "filter": {
+                  "card_type": "creature",
+                  "is_evolution": false
+                },
+                "max_count": 2,
+                "max_total_cost": 5,
+                "seal_amount": 1,
+                "summoning_sick": true,
+                "store_as": "memotta_revived",
+                "prompt": "封印を付けて墓地から出す進化ではないクリーチャーを選ぶ（コスト合計5以下）"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.7/77": {
+      "name_ja": "勇愛の絆",
+      "kind": "creature",
+      "special_types": [
+        "evolution"
+      ],
+      "cost": 4,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 9000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_zero",
+            "civilization": "fire",
+            "label": "革命0トリガー：クリーチャーが自分を攻撃する時、自分のシールドが1つもなければ、このクリーチャーを手札から表向きにしてもよい。そうしたら、自分の山札の上から1枚を表向きにする。それが火の、進化ではないクリーチャーなら出し、このクリーチャーをその上に置く。"
+          },
+          {
+            "ability_id": "evolution",
+            "civilizations": [
+              "fire"
+            ],
+            "label": "進化：火のクリーチャー1体の上に置く。"
+          },
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "yuai_kizuna_enter_destroy",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_battle_zone",
+                "filter": {
+                  "cost": {
+                    "lte": 6
+                  }
+                },
+                "optional": false,
+                "prompt": "破壊する相手のコスト6以下のエレメントを1つ選ぶ",
+                "effect": {
+                  "effect_id": "destroy"
+                }
+              }
+            ],
+            "label": "このクリーチャーが出た時、相手のコスト6以下のエレメントを1つ選び、破壊する。"
+          },
+          {
+            "ability_id": "yuai_kizuna_attack_destroy",
+            "trigger": {
+              "type": "attack_declared",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_battle_zone",
+                "filter": {
+                  "cost": {
+                    "lte": 6
+                  }
+                },
+                "optional": false,
+                "prompt": "破壊する相手のコスト6以下のエレメントを1つ選ぶ",
+                "effect": {
+                  "effect_id": "destroy"
+                }
+              }
+            ],
+            "label": "このクリーチャーが攻撃する時、相手のコスト6以下のエレメントを1つ選び、破壊する。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.8/77": {
+      "name_ja": "ガチャンコ ガチロボ弐号機",
+      "kind": "creature",
+      "cost": 8,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 5000,
+      "abilities": {
+        "keyword": [
+          "speed_attacker"
+        ],
+        "static": [
+          {
+            "ability_id": "gachirobo2_empty_board_cost_reduction",
+            "type": "cost_modifier",
+            "label": "自分のクリーチャーがなければ、このクリーチャーの召喚コストを3少なくする。",
+            "applies_to": {
+              "card": "self",
+              "from_zone": "hand"
+            },
+            "modifier": {
+              "amount": -3,
+              "min_cost": 1
+            },
+            "condition": {
+              "type": "card_count_matches",
+              "from": {
+                "player": "controller",
+                "zone": "battle"
+              },
+              "filter": {
+                "card_type": "creature"
+              },
+              "op": "eq",
+              "value": 0
+            }
+          },
+          {
+            "ability_id": "gachirobo2_low_shields_speed_grant",
+            "type": "grant_rule",
+            "label": "相手のシールドが2つ以下なら、自分のクリーチャーすべてに「スピードアタッカー」を与える。",
+            "active_if": {
+              "type": "player_zone_count",
+              "player": "opponent",
+              "zone": "shield",
+              "op": "lte",
+              "value": 2
+            },
+            "rule": {
+              "scope": "own_creatures",
+              "ability": {
+                "ability_id": "speed_attacker"
+              }
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "gachirobo2_attack_top3_same_cost",
+            "label": "このクリーチャーが攻撃する時、自分の山札の上から3枚を表向きにする。それがすべて同じコストのクリーチャーなら出す。そうでなければ、好きな順序で山札の下に置く。",
+            "trigger": {
+              "type": "attack_declared",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "look_top_same_cost_creatures_to_battle",
+                "amount": 3
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.9/77": {
+      "name_ja": "勝利宣言 鬼丸「V」",
+      "kind": "creature",
+      "cost": 10,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 9000,
+      "abilities": {
+        "keyword": [
+          "mach_fighter",
+          "w_breaker",
+          {
+            "ability_id": "battle_power",
+            "amount": 5000
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "onimaru_v_attack_end_power_gachinko",
+            "label": "このクリーチャーの攻撃の終わりに、自分が負けるか中止するまで、相手とパワー・ガチンコ・ジャッジする。自分が勝った回数、相手は自身の、クリーチャーまたはシールドを1つ選び、持ち主のマナゾーンに置く。",
+            "trigger": {
+              "type": "attack_ended",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "power_gachinko_judge",
+                "optional": true,
+                "repeat_until_lose": true,
+                "prompt": "パワー・ガチンコ・ジャッジを続けますか？",
+                "on_win": [
+                  {
+                    "effect_id": "opponent_choose_own_creature_or_shield_to_mana",
+                    "prompt": "マナゾーンに置く自身のクリーチャーまたはシールドを1つ選ぶ"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.10/77": {
+      "name_ja": "鎧亜目邪王類 デス＝ヴェルムート",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 6000,
+      "abilities": {
+        "keyword": [
+          "mach_fighter",
+          "powered_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "vermut_enter_tap_mana",
+            "label": "このクリーチャーが出た時、自分の山札の上から2枚をタップしてマナゾーンに置く。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "move_card",
+                "from_zone": "deck",
+                "to_zone": "mana",
+                "selection": "top",
+                "amount": 2,
+                "tapped": true,
+                "optional": false
+              }
+            ]
+          },
+          {
+            "ability_id": "vermut_space_charge",
+            "label": "スペース・チャージ：自分のマナゾーンにカードが置かれた時、そのカードの文明に対応する効果をカード記載順（光→水→闇→火）に1度だけ解決する。",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "mana"
+            },
+            "effects": [
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "light"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "add_deck_to_shield",
+                    "amount": 1,
+                    "optional": true,
+                    "prompt": "スペース・チャージ 光：自分の山札の上から1枚をシールド化しますか？"
+                  }
+                ]
+              },
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "water"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "select_then",
+                    "candidates": "opponent_creatures",
+                    "effect": {
+                      "effect_id": "bounce"
+                    },
+                    "optional": true,
+                    "prompt": "スペース・チャージ 水：持ち主の手札に戻す相手のクリーチャーを1体選ぶ"
+                  }
+                ]
+              },
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "darkness"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "discard",
+                    "amount": 1,
+                    "target_player": "opponent",
+                    "optional": true,
+                    "prompt": "スペース・チャージ 闇：相手の手札を1枚捨てさせますか？"
+                  }
+                ]
+              },
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "fire"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "select_then",
+                    "candidates": "own_creatures",
+                    "optional": true,
+                    "prompt": "スペース・チャージ 火：このターン、パワーを+6000する自分のクリーチャーを1体選ぶ",
+                    "effects": [
+                      {
+                        "effect_id": "modify_power",
+                        "amount": 6000,
+                        "duration": "until_end_of_turn"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.VR.11/77": {
+      "name_ja": "武将利と威嚇命の決断",
+      "kind": "spell",
+      "cost": 6,
+      "civilizations": [
+        "water",
+        "fire",
+        "nature"
+      ],
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "attack_chance",
+            "attack_creature": {
+              "civilizations": [
+                "water",
+                "fire",
+                "nature"
+              ],
+              "power": {
+                "gte": 8000
+              }
+            }
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "choose_n_effects",
+          "n": 2,
+          "prompt": "次の中から選ぶ（同じものを2回選んでもよい）",
+          "choices": [
+            {
+              "label": "数字を1つ選ぶ。次の自分のターンのはじめまで、相手はその数字と同じコストの呪文を唱えられない。",
+              "effects": [
+                {
+                  "effect_id": "choose_number",
+                  "min": 0,
+                  "max": 20,
+                  "store_as": "buryouri_ikanmeu_lock_cost",
+                  "prompt": "相手が唱えられなくなる呪文のコストを選ぶ"
+                },
+                {
+                  "effect_id": "cost_execution_lock",
+                  "affected_player": "opponent",
+                  "cost": {
+                    "ref": "buryouri_ikanmeu_lock_cost"
+                  },
+                  "card_filter": {
+                    "card_type": "spell"
+                  },
+                  "duration": "until_start_of_controller_turn"
+                }
+              ]
+            },
+            {
+              "label": "相手のパワー8000以下のクリーチャーを1体選び、破壊する。",
+              "effects": [
+                {
+                  "effect_id": "select_then",
+                  "candidates": "opponent_creatures",
+                  "filter": {
+                    "power": {
+                      "lte": 8000
+                    }
+                  },
+                  "effect": {
+                    "effect_id": "destroy"
+                  },
+                  "optional": false,
+                  "prompt": "破壊する相手のパワー8000以下のクリーチャーを1体選ぶ"
+                }
+              ]
+            },
+            {
+              "label": "自分のクリーチャーを1体選ぶ。このターン、そのクリーチャーのパワーを2倍にし、「パワード・ブレイカー」を与える。",
+              "effects": [
+                {
+                  "effect_id": "select",
+                  "candidates": "own_creatures",
+                  "optional": false,
+                  "store_as": "buryouri_ikanmeu_doubled",
+                  "prompt": "パワーを2倍にする自分のクリーチャーを1体選ぶ"
+                },
+                {
+                  "effect_id": "multiply_power",
+                  "target": {
+                    "ref": "buryouri_ikanmeu_doubled"
+                  },
+                  "factor": 2,
+                  "connector": "then"
+                },
+                {
+                  "effect_id": "temporary_ability",
+                  "target": {
+                    "ref": "buryouri_ikanmeu_doubled"
+                  },
+                  "duration": "until_end_of_turn",
+                  "ability": {
+                    "id": "powered_breaker"
+                  },
+                  "connector": "then"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.R.12/77": {
+      "name_ja": "連戦の精霊龍 デルザルバーラ",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "light"
+      ],
+      "power": 5000,
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "delzalbara_enter_draw_and_play",
+            "label": "出た時、自分の光のクリーチャー1体につきカードを1枚引いてもよい。その後、光のコスト4以下のクリーチャーを1体、自分の手札から出してもよい。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "gather_matching",
+                "candidates": "own_creatures",
+                "filter": {
+                  "civilization": "light"
+                },
+                "store_as": "delzalbara_light_creatures"
+              },
+              {
+                "effect_id": "for_each",
+                "source": "stored",
+                "store_key": "delzalbara_light_creatures",
+                "effect": {
+                  "effect_id": "draw",
+                  "amount": 1,
+                  "max_amount": 1,
+                  "prompt": "光のクリーチャー1体につき、カードを1枚引きますか？"
+                }
+              },
+              {
+                "effect_id": "put_creature_from_zone",
+                "from_zone": "hand",
+                "filter": {
+                  "card_type": "creature",
+                  "civilization": "light",
+                  "max_cost": 4
+                },
+                "optional": true,
+                "prompt": "光のコスト4以下のクリーチャーを手札から出しますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.13/77": {
+      "name_ja": "ポプポプ守るナウ",
+      "kind": "spell",
+      "cost": 5,
+      "civilizations": [
+        "light"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "effect_id": "add_deck_to_shield",
+              "amount": 1,
+              "optional": false,
+              "face_options": [
+                "face_up"
+              ],
+              "store_as": "popopop_shielded",
+              "label": "自分の山札の上から1枚を表向きでシールド化する。"
+            },
+            {
+              "effect_id": "if_stored_card_matches",
+              "key": "popopop_shielded",
+              "condition": {
+                "card_type": "creature",
+                "power": {
+                  "gte": 6000
+                }
+              },
+              "connector": "then",
+              "label": "こうしてパワー6000以上のクリーチャーをシールド化したら、相手のクリーチャーを1体選び、シールド化してもよい。",
+              "effects": [
+                {
+                  "effect_id": "select_then",
+                  "candidates": "opponent_creatures",
+                  "optional": true,
+                  "prompt": "シールド化する相手のクリーチャーを1体選ぶ",
+                  "effect": {
+                    "effect_id": "move_card",
+                    "from_zone": "battle",
+                    "to_zone": "shield",
+                    "reason": "popopop_shield_opponent_creature"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.R.14/77": {
+      "name_ja": "スラスラ吸い込むナウ",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "effect_id": "look_top_choose_to_hand",
+              "amount": 4,
+              "optional": false,
+              "store_as": "sucked",
+              "label": "自分の山札の上から4枚を見る。その中から1枚を表向きにして手札に加え、残りを好きな順序で山札の下に置く。",
+              "prompt": "手札に加えるカードを1枚選ぶ"
+            },
+            {
+              "effect_id": "if_stored_card_matches",
+              "key": "sucked",
+              "condition": {
+                "card_type": "creature",
+                "power": {
+                  "gte": 6000
+                }
+              },
+              "connector": "then",
+              "label": "こうしてパワー6000以上のクリーチャーを表向きにしたら、相手のクリーチャーを1体選び、持ち主の手札に戻してもよい。",
+              "effects": [
+                {
+                  "effect_id": "select_then",
+                  "candidates": "opponent_creatures",
+                  "optional": true,
+                  "prompt": "持ち主の手札に戻す相手のクリーチャーを1体選ぶ",
+                  "effect": {
+                    "effect_id": "bounce"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.R.15/77": {
+      "name_ja": "Dの機動 ヴァイス・ヴァーチュー",
+      "kind": "field",
+      "special_types": [
+        "d2"
+      ],
+      "cost": 4,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          "g_strike",
+          {
+            "ability_id": "d_switch",
+            "label": "Dスイッチ：クリーチャーが自分を攻撃する時、このD2フィールドをゲーム中で1度上下逆さまにしてもよい。そうしたら、コスト5以下でその文明がすべて自分のマナゾーンにある、クリーチャーではないカードを1枚、自分の手札からコストを支払わずに実行してもよい。",
+            "flip_prompt": "Dスイッチ：このD2フィールドを上下逆さまにしますか？",
+            "trigger": {
+              "event": "attack_declared",
+              "target": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "execute_card_from_hand",
+                "type": "non_creature",
+                "max_cost": 5,
+                "optional": true,
+                "filter": {
+                  "civilizations_all_in_mana_zone": "self"
+                },
+                "prompt": "Dスイッチ：手札からコストを支払わずに実行するクリーチャーではないカードを1枚選ぶ"
+              }
+            ]
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "vise_virtue_turn_end_draw",
+            "label": "自分のターンの終わりに、カードを1枚引いてもよい。",
+            "trigger": {
+              "event": "turn_end",
+              "player": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "draw",
+                "amount": 1,
+                "max_amount": 1,
+                "prompt": "自分のターンの終わり：カードを1枚引きますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.16/77": {
+      "name_ja": "熱血の名 カチスギル・スキル",
+      "kind": "creature",
+      "cost": 6,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 9000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "kachisugiru_enter_opponent_discard",
+            "label": "このクリーチャーが出た時、相手は自身の手札を3枚選び、捨てる。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "discard",
+                "amount": 3,
+                "optional": false,
+                "target_player": "opponent"
+              }
+            ]
+          },
+          {
+            "ability_id": "kachisugiru_destroyed_judge_revive",
+            "label": "このクリーチャーが破壊された時、相手とパワー・ガチンコ・ジャッジしてもよい。自分が勝ったら、このクリーチャーを自分の墓地からタップして出す。",
+            "ignore_source_continuity": true,
+            "active_zones": "any",
+            "trigger": {
+              "type": "destroy",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "power_gachinko_judge",
+                "optional": true,
+                "prompt": "パワー・ガチンコ・ジャッジをしますか？",
+                "on_win": [
+                  {
+                    "effect_id": "put_creature_from_zone",
+                    "from_zone": "graveyard",
+                    "selection": "source_card",
+                    "tapped": true,
+                    "optional": false
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.17/77": {
+      "name_ja": "ごくごく掘るナウ",
+      "kind": "spell",
+      "cost": 4,
+      "civilizations": [
+        "darkness"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "effect_id": "mill",
+              "target": "own_deck",
+              "amount": 3,
+              "optional": false,
+              "label": "自分の山札の上から3枚を墓地に置く。"
+            },
+            {
+              "effect_id": "move_card",
+              "from_zone": "graveyard",
+              "to_zone": "hand",
+              "target_player": "self",
+              "amount": 1,
+              "optional": false,
+              "filter": {
+                "card_type": "creature"
+              },
+              "store_as": "dug",
+              "label": "その後、クリーチャーを1体、自分の墓地から手札に戻す。",
+              "prompt": "手札に戻すクリーチャーを1体選ぶ"
+            },
+            {
+              "effect_id": "if_stored_card_matches",
+              "key": "dug",
+              "condition": {
+                "card_type": "creature",
+                "power": {
+                  "gte": 6000
+                }
+              },
+              "connector": "then",
+              "label": "こうしてパワー6000以上のクリーチャーを手札に戻したら、相手のクリーチャーを1体選び、破壊する。",
+              "effects": [
+                {
+                  "effect_id": "destroy_creature",
+                  "target": "opponent_creatures",
+                  "optional": false,
+                  "prompt": "破壊する相手のクリーチャーを1体選ぶ"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.R.18/77": {
+      "name_ja": "流星の使者 ウコン＆サコン",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 3000,
+      "abilities": {
+        "keyword": [],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "ukon_sakon_buff_other_enter",
+            "trigger": {
+              "type": "enter_battle",
+              "subject": "controller",
+              "filter": {
+                "card_type": "creature"
+              }
+            },
+            "condition": {
+              "type": "not",
+              "condition": {
+                "type": "event_card_is",
+                "card": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "once_per_turn_gate",
+                "key": "ukon_sakon_buff"
+              },
+              {
+                "type": "choice",
+                "connector": "then",
+                "prompt": "そのクリーチャーにパワー+4000・スピードアタッカー・パワード・ブレイカーを与えますか？",
+                "choices": [
+                  {
+                    "label": "与える",
+                    "effects": [
+                      {
+                        "effect_id": "temporary_ability",
+                        "target": {
+                          "ref": "event.card"
+                        },
+                        "duration": "permanent",
+                        "ability": {
+                          "ability_id": "power_buff",
+                          "amount": 4000
+                        }
+                      },
+                      {
+                        "effect_id": "temporary_ability",
+                        "target": {
+                          "ref": "event.card"
+                        },
+                        "duration": "permanent",
+                        "ability": {
+                          "id": "speed_attacker"
+                        }
+                      },
+                      {
+                        "effect_id": "temporary_ability",
+                        "target": {
+                          "ref": "event.card"
+                        },
+                        "duration": "permanent",
+                        "ability": {
+                          "id": "powered_breaker"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "label": "与えない",
+                    "effects": []
+                  }
+                ]
+              },
+              {
+                "effect_id": "once_per_turn_mark",
+                "key": "ukon_sakon_buff",
+                "connector": "then"
+              }
+            ],
+            "label": "各ターンに1度、自分の他のクリーチャーが出た時、そのクリーチャーのパワーを+4000し、「スピードアタッカー」と「パワード・ブレイカー」を与えてもよい。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.19/77": {
+      "name_ja": "ドファドファ叩くナウ",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "fire"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "effect_id": "discard",
+              "amount": 1,
+              "optional": false,
+              "store_as": "dofadofa_discarded",
+              "label": "自分の手札を1枚捨てる。"
+            },
+            {
+              "effect_id": "draw",
+              "amount": 2,
+              "label": "カードを2枚引く。"
+            },
+            {
+              "effect_id": "if_stored_card_matches",
+              "key": "dofadofa_discarded",
+              "condition": {
+                "card_type": "creature",
+                "power": {
+                  "gte": 6000
+                }
+              },
+              "label": "こうしてパワー6000以上のクリーチャーを捨てたら、コストの合計が6以下になるように相手のエレメントを好きな数選び、破壊する。",
+              "effects": [
+                {
+                  "effect_id": "select_within_total_cost",
+                  "candidates": "opponent_battle_zone",
+                  "filter": {
+                    "card_type": "element"
+                  },
+                  "max_total_cost": 6,
+                  "store_as": "dofadofa_targets",
+                  "optional": true,
+                  "prompt": "破壊する相手のエレメントを選ぶ（コスト合計6以下）"
+                },
+                {
+                  "effect_id": "destroy_multiple",
+                  "source": "dofadofa_targets",
+                  "connector": "then"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.R.20/77": {
+      "name_ja": "虹暴の面 ガチ=ザ＝デッドマン",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 3000,
+      "abilities": {
+        "keyword": [],
+        "static": [
+          {
+            "type": "mana_rule",
+            "label": "自分のマナゾーンにあるカードは、すべての文明を持つ。",
+            "rule": {
+              "kind": "all_civilizations"
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "gachi_deadman_turn_start_power_gachinko_mana_boost",
+            "label": "自分のターンのはじめに、相手とパワー・ガチンコ・ジャッジしてもよい。自分が勝ったら、自分の山札の上から1枚をマナゾーンに置く。",
+            "trigger": {
+              "event": "turn_start",
+              "subject": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "power_gachinko_judge",
+                "optional": true,
+                "prompt": "相手とパワー・ガチンコ・ジャッジしますか？",
+                "on_win": [
+                  {
+                    "effect_id": "move_deck_top",
+                    "amount": 1,
+                    "to_zone": "mana",
+                    "optional": false
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.21/77": {
+      "name_ja": "サクサク打つべしナウ",
+      "kind": "spell",
+      "cost": 4,
+      "civilizations": [
+        "nature"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "effect_id": "move_card",
+              "from_zone": "deck",
+              "to_zone": "mana",
+              "selection": "top",
+              "amount": 2,
+              "tapped": true,
+              "target_player": "self",
+              "optional": false,
+              "label": "自分の山札の上から2枚をタップしてマナゾーンに置く。"
+            },
+            {
+              "effect_id": "move_card",
+              "from_zone": "mana",
+              "to_zone": "hand",
+              "selection": "choose",
+              "amount": 1,
+              "target_player": "self",
+              "optional": false,
+              "store_as": "returned",
+              "label": "その後、カードを1枚、自分のマナゾーンから手札に戻す。",
+              "prompt": "手札に戻すカードを1枚選ぶ"
+            },
+            {
+              "effect_id": "if_stored_card_matches",
+              "key": "returned",
+              "condition": {
+                "card_type": "creature",
+                "power": {
+                  "gte": 6000
+                }
+              },
+              "connector": "then",
+              "label": "こうしてパワー6000以上のクリーチャーを手札に戻したら、相手のコスト6以下のエレメントを1つ選び、持ち主のマナゾーンに置いてもよい。",
+              "effects": [
+                {
+                  "effect_id": "select_then",
+                  "candidates": "opponent_battle_zone",
+                  "filter": {
+                    "cost": {
+                      "lte": 6
+                    }
+                  },
+                  "optional": true,
+                  "prompt": "持ち主のマナゾーンに置く相手のエレメントを1つ選ぶ",
+                  "effect": {
+                    "effect_id": "move_card",
+                    "from_zone": "battle",
+                    "to_zone": "mana"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.R.22/77": {
+      "name_ja": "熱血美刃 ミケランジェロ",
+      "kind": "creature",
+      "cost": 6,
+      "civilizations": [
+        "light",
+        "water"
+      ],
+      "power": 9500,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": [
+                "light",
+                "water"
+              ],
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          "blocker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "michelangelo_enter_face_up_shield_draw",
+            "label": "このクリーチャーが出た時、自分の山札の上から1枚を表向きでシールド化してもよい。その後、自分の表向きのシールド1つにつき、カードを1枚引いてもよい。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "add_deck_to_shield",
+                "amount": 1,
+                "optional": true,
+                "face_options": [
+                  "face_up"
+                ],
+                "prompt": "山札の上から1枚を表向きでシールド化しますか？"
+              },
+              {
+                "effect_id": "count",
+                "source": "zone",
+                "zone": "shield",
+                "target_player": "self",
+                "condition": {
+                  "shield_face_up": true
+                },
+                "count_key": "michelangelo_face_up_shields"
+              },
+              {
+                "effect_id": "draw",
+                "amount": {
+                  "from": "stored",
+                  "key": "michelangelo_face_up_shields"
+                },
+                "optional": true,
+                "prompt": "表向きのシールドの数までカードを引きますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.23/77": {
+      "name_ja": "漢の2号 ボスカツ逆",
+      "kind": "creature",
+      "cost": 6,
+      "civilizations": [
+        "light",
+        "nature"
+      ],
+      "power": 8500,
+      "abilities": {
+        "keyword": [
+          "g_strike",
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": [
+                "light",
+                "nature"
+              ],
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          "w_breaker",
+          "escape"
+        ],
+        "static": [
+          {
+            "ability_id": "bosskats_reverse_summon_cost_reduction",
+            "type": "cost_modifier",
+            "applies_to": {
+              "player": "controller",
+              "card_type": "creature"
+            },
+            "modifier": {
+              "amount": -2,
+              "min_cost": 1
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.24/77": {
+      "name_ja": "絶超熱血 ロビンフッド",
+      "kind": "creature",
+      "cost": 6,
+      "civilizations": [
+        "water",
+        "darkness"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": [
+                "water",
+                "darkness"
+              ],
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "robinhood_enter_opponent_discard",
+            "label": "このクリーチャーが出た時、相手の手札を1枚見ないで選び、捨てさせる。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "discard",
+                "amount": 1,
+                "target_player": "opponent",
+                "optional": false
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": [
+          {
+            "ability_id": "robinhood_opponent_deck_to_bottom_replacement",
+            "type": "zone_change",
+            "label": "相手の山札から、手札以外のゾーンにカードが置かれる時、かわりにそのカードを持ち主の山札の下に置く。",
+            "attempt": {
+              "event": "zone_change_attempt",
+              "from_zone": "deck",
+              "to_zone": {
+                "ne": "hand"
+              }
+            },
+            "active_if": {
+              "type": "and",
+              "conditions": [
+                {
+                  "type": "source_zone_is",
+                  "zone": "battle"
+                },
+                {
+                  "type": "event_player_is",
+                  "player": "opponent"
+                }
+              ]
+            },
+            "replace_with": {
+              "to_zone": "deck"
+            }
+          }
+        ]
+      }
+    },
+    "dm26-rp2.R.25/77": {
+      "name_ja": "革命の轟速 レッドゾーンW",
+      "kind": "creature",
+      "cost": 6,
+      "civilizations": [
+        "darkness",
+        "fire"
+      ],
+      "power": 9000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": [
+                "darkness",
+                "fire"
+              ],
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          "speed_attacker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "redzone_w_enter_seal_opponent",
+            "label": "このクリーチャーが出た時、相手のクリーチャーを1体選び、相手はそれに封印を1つ付ける。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "optional": false,
+                "prompt": "封印を1つ付ける相手のクリーチャーを1体選ぶ",
+                "effect": {
+                  "effect_id": "attach_seal",
+                  "amount": 1,
+                  "seal_player": "target_owner"
+                }
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.26/77": {
+      "name_ja": "V闘将軍 カツキング",
+      "kind": "creature",
+      "cost": 6,
+      "civilizations": [
+        "fire",
+        "nature"
+      ],
+      "power": 9000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": [
+                "fire",
+                "nature"
+              ],
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          "speed_attacker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "katsuking_enter_blocker_to_mana",
+            "label": "このクリーチャーが出た時、相手の「ブロッカー」を持つクリーチャーを1体選び、持ち主のマナゾーンに置く。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "filter": {
+                  "has_keyword": "blocker"
+                },
+                "optional": false,
+                "prompt": "持ち主のマナゾーンに置く相手の「ブロッカー」を1体選ぶ",
+                "effect": {
+                  "effect_id": "move_card",
+                  "from_zone": "battle",
+                  "to_zone": "mana",
+                  "reason": "katsuking_blocker_to_mana"
+                }
+              }
+            ]
+          },
+          {
+            "ability_id": "katsuking_attack_end_reveal",
+            "label": "このクリーチャーの攻撃の終わりに、自分の山札の上から3枚を表向きにする。その中からクリーチャーを1体、手札に加えてもよい。残りを好きな順序で山札の下に置く。",
+            "trigger": {
+              "type": "attack_ended",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "look_top_choose_to_hand",
+                "amount": 3,
+                "optional": true,
+                "filter": {
+                  "card_type": "creature"
+                },
+                "prompt": "クリーチャーを1体、手札に加えてもよい"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.R.27/77": {
+      "name_ja": "獣音類武士目 グローバル・ステージ",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "fire",
+        "nature"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "super_guardman"
+        ],
+        "static": [
+          {
+            "ability_id": "global_stage_grant_speed_attacker",
+            "type": "grant_rule",
+            "label": "自分の「ガードマン」を持つクリーチャーすべてに「スピードアタッカー」を与える。",
+            "rule": {
+              "scope": "own_creatures",
+              "filter": {
+                "has_keyword_contains": "guardman"
+              },
+              "ability": {
+                "ability_id": "speed_attacker"
+              }
+            }
+          },
+          {
+            "ability_id": "global_stage_grant_powered_breaker",
+            "type": "grant_rule",
+            "label": "自分の「ガードマン」を持つクリーチャーすべてに「パワード・ブレイカー」を与える。",
+            "rule": {
+              "scope": "own_creatures",
+              "filter": {
+                "has_keyword_contains": "guardman"
+              },
+              "ability": {
+                "ability_id": "powered_breaker"
+              }
+            }
+          },
+          {
+            "ability_id": "global_stage_ignore_own_attack_forbid",
+            "type": "grant_rule",
+            "label": "自分の「ガードマン」を持つクリーチャーが持つ、攻撃できない能力を無視する。",
+            "rule": {
+              "scope": "own_creatures",
+              "filter": {
+                "has_keyword_contains": "guardman"
+              },
+              "ability": {
+                "ability_id": "ignore_own_attack_forbid"
+              }
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.28/77": {
+      "name_ja": "護英雄 タップ・ド・レイユ",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "light"
+      ],
+      "power": 3000,
+      "abilities": {
+        "keyword": [
+          "shield_trigger",
+          "blocker",
+          {
+            "ability_id": "w_breaker",
+            "active_if": {
+              "type": "mana_armor",
+              "civilization": "light",
+              "count": 3
+            }
+          }
+        ],
+        "static": [
+          {
+            "ability_id": "tap_de_reille_mana_arms_power",
+            "type": "grant_rule",
+            "label": "マナ武装 3：光のカードが3枚以上で、パワー+4000する。",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "power_buff",
+                "amount": 4000,
+                "active_if": {
+                  "type": "mana_armor",
+                  "civilization": "light",
+                  "count": 3
+                }
+              }
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "tap_de_reille_enter_tap",
+            "label": "このクリーチャーが出た時、相手のクリーチャーを2体選び、タップする。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "type": "select",
+                "candidates": "opponent_creatures",
+                "count": 2,
+                "optional": false,
+                "store_as": "tap_de_reille_targets",
+                "prompt": "タップする相手のクリーチャーを2体選ぶ"
+              },
+              {
+                "type": "tap",
+                "cards": {
+                  "ref": "tap_de_reille_targets"
+                },
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.29/77": {
+      "name_ja": "鎧亜寄生パラス・キューピッド",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "light"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "paras_cupid_enter_tap_lock",
+            "label": "このクリーチャーが出た時、相手のクリーチャーを1体選び、タップする。次の自分のターンのはじめまで、それはアンタップしない。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "effect": {
+                  "effect_id": "tap"
+                },
+                "store_as": "paras_cupid_target",
+                "optional": false,
+                "prompt": "タップする相手のクリーチャーを1体選ぶ"
+              },
+              {
+                "effect_id": "lock_untap",
+                "target": {
+                  "ref": "paras_cupid_target"
+                },
+                "duration": "until_start_of_controller_turn",
+                "connector": "then"
+              }
+            ]
+          },
+          {
+            "ability_id": "paras_cupid_space_charge",
+            "label": "スペース・チャージ：自分のマナゾーンにカードが置かれた時、そのカードの文明に対応する効果を1度だけ解決する。闇：相手のクリーチャーを1体選び、このターン、そのクリーチャーのパワーを-2000してもよい。",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "mana"
+            },
+            "effects": [
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "darkness"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "select_then",
+                    "candidates": "opponent_creatures",
+                    "optional": true,
+                    "prompt": "スペース・チャージ 闇：このターン、パワーを-2000する相手のクリーチャーを1体選ぶ",
+                    "effects": [
+                      {
+                        "effect_id": "modify_power",
+                        "amount": -2000,
+                        "duration": "until_end_of_turn"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.30/77": {
+      "name_ja": "光器セイント・ガチ・マリア",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "light"
+      ],
+      "power": 2500,
+      "abilities": {
+        "keyword": [],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "saint_gachi_maria_turn_start_judge",
+            "label": "自分のターンのはじめに、相手とパワー・ガチンコ・ジャッジしてもよい。自分が勝ったら、自分の山札の上から1枚をシールド化する。",
+            "trigger": {
+              "type": "turn_start",
+              "player": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "power_gachinko_judge",
+                "optional": true,
+                "prompt": "パワー・ガチンコ・ジャッジをしますか？",
+                "on_win": [
+                  {
+                    "effect_id": "add_deck_to_shield",
+                    "amount": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.31/77": {
+      "name_ja": "極俺秘伝ライオネル・ガード",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "light"
+      ],
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "attack_chance",
+            "attack_creature": {
+              "civilization": "light",
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          {
+            "ability_id": "recycle",
+            "recycle_cost": 4,
+            "civilization": "light"
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "自分の山札の上から1枚をシールド化する。",
+          "effect_id": "add_deck_to_shield",
+          "amount": 1
+        }
+      ]
+    },
+    "dm26-rp2.U.32/77": {
+      "name_ja": "理英雄 コギトL",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "water"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "shield_trigger",
+          {
+            "ability_id": "w_breaker",
+            "active_if": {
+              "type": "mana_armor",
+              "civilization": "water",
+              "count": 3
+            }
+          }
+        ],
+        "static": [
+          {
+            "ability_id": "cogito_l_mana_arms_power",
+            "type": "grant_rule",
+            "label": "マナ武装 3：水のカードが3枚以上で、パワー+4000する。",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "power_buff",
+                "amount": 4000,
+                "active_if": {
+                  "type": "mana_armor",
+                  "civilization": "water",
+                  "count": 3
+                }
+              }
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "cogito_l_enter_bounce",
+            "label": "このクリーチャーが出た時、相手のクリーチャーを2体まで選び、持ち主の手札に戻す。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "type": "select",
+                "candidates": "opponent_creatures",
+                "count": 2,
+                "optional": true,
+                "store_as": "cogito_bounced",
+                "prompt": "持ち主の手札に戻す相手のクリーチャーを2体まで選ぶ"
+              },
+              {
+                "type": "move",
+                "cards": {
+                  "ref": "cogito_bounced"
+                },
+                "to_zone": "hand",
+                "reason": "bounce",
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.33/77": {
+      "name_ja": "救済のラクシャ ミルク",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "water"
+      ],
+      "power": 3000,
+      "abilities": {
+        "keyword": [
+          "shield_go"
+        ],
+        "static": [
+          {
+            "ability_id": "milk_must_be_chosen",
+            "type": "choice_replacement",
+            "label": "相手がクリーチャーを選ぶなら、可能ならこのクリーチャーを選ぶ。",
+            "rule": {
+              "kind": "opponent_creature_choice"
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.34/77": {
+      "name_ja": "鎧亜寄生パラス・ボクサー",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "water"
+      ],
+      "power": 1000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          {
+            "ability_id": "powered_blocker",
+            "amount": 8000,
+            "label": "パワード・ブロッカー+8000（ブロック中、このクリーチャーのパワーを+8000する）"
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "paras_boxer_space_charge",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "mana"
+            },
+            "effects": [
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "fire"
+                  }
+                },
+                "then": [
+                  {
+                    "type": "select",
+                    "candidates": "opponent_creatures",
+                    "optional": false,
+                    "store_as": "paras_boxer_target",
+                    "prompt": "スペース・チャージ 火：可能なら攻撃させる相手のクリーチャーを1体選ぶ"
+                  },
+                  {
+                    "effect_id": "temporary_ability",
+                    "target": {
+                      "ref": "paras_boxer_target"
+                    },
+                    "duration": "until_start_of_controller_turn",
+                    "ability": {
+                      "id": "must_attack"
+                    },
+                    "connector": "then"
+                  }
+                ]
+              }
+            ],
+            "label": "スペース・チャージ：自分のマナゾーンにカードが置かれた時、そのカードの文明に対応する効果を1度だけ解決する。火：相手のクリーチャーを1体選ぶ。次の自分のターンのはじめまで、そのクリーチャーは可能なら攻撃する。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.35/77": {
+      "name_ja": "極智秘伝ローゼス・チューン",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "attack_chance",
+            "attack_creature": {
+              "civilization": "water",
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          {
+            "ability_id": "recycle",
+            "recycle_cost": 4,
+            "civilization": "water"
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "カードを3枚引き、自分の手札を2枚、好きな順序で山札の上に置く。",
+          "effect_id": "draw",
+          "amount": 3
+        },
+        {
+          "effect_id": "move_card",
+          "from_zone": "hand",
+          "to_zone": "deck",
+          "selection": "choose",
+          "amount": 2,
+          "optional": false,
+          "destination_position": "top",
+          "connector": "then",
+          "prompt": "山札の上に置く手札を1枚選ぶ（2枚選択、最後の選択が一番上）"
+        }
+      ]
+    },
+    "dm26-rp2.U.36/77": {
+      "name_ja": "熱血の星夜 アバター・イン・ザ・ラブ",
+      "kind": "creature",
+      "cost": 7,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "w_breaker"
+        ],
+        "static": [
+          {
+            "ability_id": "avatar_in_the_love_alternative_summon_cost",
+            "type": "cost_payment_rule",
+            "label": "このクリーチャーを召喚する時、自分のクリーチャーを1体破壊してもよい。そうしたら、このクリーチャーの召喚コストを4少なくする。",
+            "rule": {
+              "kind": "alternative_payment",
+              "costs": [
+                {
+                  "type": "pay_mana",
+                  "amount": 3,
+                  "civilizations": [
+                    "darkness"
+                  ]
+                },
+                {
+                  "type": "destroy",
+                  "prompt": "アバター・イン・ザ・ラブのために破壊する自分のクリーチャーを1体選ぶ"
+                }
+              ]
+            },
+            "applies_to": {
+              "from_zone": "hand"
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.37/77": {
+      "name_ja": "凶英雄 アカトクロ",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "shield_trigger",
+          {
+            "ability_id": "w_breaker",
+            "active_if": {
+              "type": "mana_armor",
+              "civilization": "darkness",
+              "count": 3
+            }
+          }
+        ],
+        "static": [
+          {
+            "ability_id": "akatokuro_mana_arms_power",
+            "type": "grant_rule",
+            "label": "マナ武装 3：闇のカードが3枚以上で、パワー+4000する。",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "power_buff",
+                "amount": 4000,
+                "active_if": {
+                  "type": "mana_armor",
+                  "civilization": "darkness",
+                  "count": 3
+                }
+              }
+            }
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "akatokuro_enter_destroy",
+            "label": "このクリーチャーが出た時、相手のアンタップしているクリーチャーを1体選び、破壊する。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "type": "select",
+                "candidates": "opponent_creatures",
+                "filter": {
+                  "tapped": false
+                },
+                "count": 1,
+                "optional": false,
+                "store_as": "akatokuro_target",
+                "prompt": "破壊する相手のアンタップしているクリーチャーを1体選ぶ"
+              },
+              {
+                "type": "destroy",
+                "card": {
+                  "ref": "akatokuro_target"
+                },
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.38/77": {
+      "name_ja": "鎧亜寄生パラス・マジシャン",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 2000,
+      "abilities": {
+        "keyword": [
+          "g_strike"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "paras_magician_space_charge",
+            "label": "スペース・チャージ：自分のマナゾーンにカードが置かれた時、そのカードの文明に対応する効果を1度だけ解決する。自然：自分のシールドを1つマナゾーンに置いてもよい。この能力は各ターン1度しか使えない。",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "mana"
+            },
+            "condition": {
+              "type": "event_card_matches",
+              "card": "moved_card",
+              "filter": {
+                "civilization": "nature"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "once_per_turn_gate",
+                "key": "paras_magician_space_charge"
+              },
+              {
+                "effect_id": "move_card",
+                "from_zone": "shield",
+                "to_zone": "mana",
+                "amount": 1,
+                "optional": true,
+                "connector": "then",
+                "prompt": "スペース・チャージ 自然：自分のシールドを1つマナゾーンに置きますか？"
+              },
+              {
+                "effect_id": "once_per_turn_mark",
+                "key": "paras_magician_space_charge",
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.39/77": {
+      "name_ja": "極呪秘伝サスペンス・マインド",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "darkness"
+      ],
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "attack_chance",
+            "attack_creature": {
+              "civilization": "darkness",
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          {
+            "ability_id": "recycle",
+            "recycle_cost": 4,
+            "civilization": "darkness"
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "相手の手札を1枚見ないで選び、捨てさせる。",
+          "effect_id": "discard",
+          "amount": 1,
+          "target_player": "opponent",
+          "optional": false
+        }
+      ]
+    },
+    "dm26-rp2.U.40/77": {
+      "name_ja": "撃英雄 ガイグンシン",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [
+          {
+            "ability_id": "gaigunshin_mana_arms_power",
+            "type": "grant_rule",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "power_buff",
+                "amount": 4000,
+                "active_if": {
+                  "type": "mana_armor",
+                  "civilization": "fire",
+                  "count": 3
+                }
+              }
+            },
+            "label": "マナ武装 3：自分のマナゾーンに火のカードが3枚以上あれば、このクリーチャーのパワーを+4000する。"
+          },
+          {
+            "ability_id": "gaigunshin_mana_arms_wbreaker",
+            "type": "grant_rule",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "w_breaker",
+                "active_if": {
+                  "type": "mana_armor",
+                  "civilization": "fire",
+                  "count": 3
+                }
+              }
+            },
+            "label": "マナ武装 3：自分のマナゾーンに火のカードが3枚以上あれば、「W・ブレイカー」を与える。"
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "gaigunshin_enter_destroy",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_within_total_power",
+                "candidates": "opponent_creatures",
+                "max_total_power": "source_power",
+                "store_as": "gaigunshin_targets",
+                "optional": true,
+                "prompt": "破壊する相手のクリーチャーを選ぶ（パワーの合計がこのクリーチャーのパワー以下）"
+              },
+              {
+                "effect_id": "destroy_multiple",
+                "source": "gaigunshin_targets"
+              }
+            ],
+            "label": "このクリーチャーが出た時、パワーの合計がこのクリーチャーのパワー以下になるように相手のクリーチャーを好きな数選び、破壊する。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.41/77": {
+      "name_ja": "鎧亜寄生パラス・ミュージック",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 2000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "battle_power",
+            "amount": 3000,
+            "label": "バトル中、このクリーチャーのパワーを+3000する。"
+          }
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "paras_music_space_charge",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "mana"
+            },
+            "effects": [
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "light"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "select_then",
+                    "candidates": "opponent_creatures",
+                    "effect": {
+                      "effect_id": "tap"
+                    },
+                    "optional": false,
+                    "store_as": "paras_music_target",
+                    "prompt": "スペース・チャージ 光：タップする相手のクリーチャーを1体選ぶ"
+                  },
+                  {
+                    "effect_id": "lock_untap",
+                    "target": {
+                      "ref": "paras_music_target"
+                    },
+                    "duration": "until_start_of_controller_turn",
+                    "connector": "then"
+                  }
+                ]
+              }
+            ],
+            "label": "スペース・チャージ：自分のマナゾーンにカードが置かれた時、そのカードの文明に対応する効果を1度だけ解決する。光：相手のクリーチャーを1体選び、タップする。次の自分のターンのはじめまで、それはアンタップしない。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.42/77": {
+      "name_ja": "連射のラクシャ ユキメ",
+      "kind": "creature",
+      "cost": 1,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "shield_go"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "yukime_enter_judge_or_self_destroy",
+            "label": "このクリーチャーが出た時、相手とパワー・ガチンコ・ジャッジする。自分が負けたら、このクリーチャーを破壊する。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "power_gachinko_judge",
+                "on_lose": [
+                  {
+                    "type": "destroy",
+                    "card": {
+                      "ref": "source"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.43/77": {
+      "name_ja": "極命秘伝グレート・クラッシュ",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "fire"
+      ],
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "attack_chance",
+            "attack_creature": {
+              "civilization": "fire",
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          {
+            "ability_id": "recycle",
+            "recycle_cost": 4,
+            "civilization": "fire"
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "相手のパワー5000以下のクリーチャーを1体選び、破壊する。",
+          "effect_id": "select_then",
+          "candidates": "opponent_creatures",
+          "filter": {
+            "power": {
+              "lte": 5000
+            }
+          },
+          "optional": false,
+          "prompt": "破壊する相手のパワー5000以下のクリーチャーを1体選ぶ",
+          "effect": {
+            "effect_id": "destroy"
+          }
+        }
+      ]
+    },
+    "dm26-rp2.U.44/77": {
+      "name_ja": "牙英雄 アワザ＝カーン",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 5000,
+      "abilities": {
+        "keyword": [
+          "shield_trigger",
+          {
+            "ability_id": "w_breaker",
+            "active_if": {
+              "type": "mana_armor",
+              "civilization": "nature",
+              "count": 3
+            }
+          }
+        ],
+        "static": [
+          {
+            "ability_id": "awaza_khan_tap_to_play",
+            "type": "enter_battle_rule",
+            "rule": {
+              "kind": "enters_tapped",
+              "zones": [
+                "battle"
+              ],
+              "optional": true,
+              "prompt": "このクリーチャーをタップして出しますか？"
+            },
+            "applies_to": {
+              "player": "self"
+            }
+          },
+          {
+            "ability_id": "awaza_khan_attack_lure",
+            "type": "attack_rule",
+            "label": "相手のクリーチャーが攻撃するなら、可能ならこのクリーチャーを攻撃する。",
+            "rule": {
+              "kind": "must_attack_this"
+            }
+          },
+          {
+            "ability_id": "awaza_khan_mana_arms_power",
+            "type": "grant_rule",
+            "label": "マナ武装 3：自然のカードが3枚以上で、パワー+4000する。",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "power_buff",
+                "amount": 4000,
+                "active_if": {
+                  "type": "mana_armor",
+                  "civilization": "nature",
+                  "count": 3
+                }
+              }
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.45/77": {
+      "name_ja": "鎧亜寄生パラス・ピエロ",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 3000,
+      "abilities": {
+        "keyword": [],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "paras_pierrot_attack_mana_charge",
+            "label": "このクリーチャーが攻撃する時、自分の山札の上から1枚をマナゾーンに置いてもよい。",
+            "trigger": {
+              "type": "attack_declared",
+              "attacker": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "move_card",
+                "from_zone": "deck",
+                "to_zone": "mana",
+                "selection": "top",
+                "amount": 1,
+                "optional": true,
+                "prompt": "自分の山札の上から1枚をマナゾーンに置きますか？"
+              }
+            ]
+          },
+          {
+            "ability_id": "paras_pierrot_space_charge",
+            "label": "スペース・チャージ：自分のマナゾーンにカードが置かれた時、そのカードの文明に対応する効果を1度だけ解決する。水：カードを1枚引いてもよい。",
+            "trigger": {
+              "type": "zone_change",
+              "subject": "controller",
+              "to_zone": "mana"
+            },
+            "effects": [
+              {
+                "type": "if",
+                "condition": {
+                  "type": "event_card_matches",
+                  "card": "moved_card",
+                  "filter": {
+                    "civilization": "water"
+                  }
+                },
+                "then": [
+                  {
+                    "effect_id": "draw",
+                    "amount": 1,
+                    "max_amount": 1,
+                    "prompt": "スペース・チャージ 水：カードを1枚引きますか？"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.46/77": {
+      "name_ja": "雪精 エリカッチュ。",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "super_guardman"
+        ],
+        "static": [
+          {
+            "ability_id": "erikacchu_cannot_attack",
+            "type": "attack_rule",
+            "rule": {
+              "kind": "cannot_attack_unless",
+              "condition": {
+                "type": "not",
+                "condition": {
+                  "type": "always"
+                }
+              }
+            },
+            "label": "このクリーチャーは攻撃できない。"
+          }
+        ],
+        "triggered": [
+          {
+            "ability_id": "erikacchu_enter_battle_fight",
+            "trigger": {
+              "type": "enter_battle",
+              "subject": "opponent",
+              "filter": {
+                "card_type": "creature"
+              },
+              "from_zone": {
+                "ne": "hand"
+              }
+            },
+            "effects": [
+              {
+                "type": "choice",
+                "prompt": "このクリーチャーとそのクリーチャーをバトルさせますか？",
+                "choices": [
+                  {
+                    "label": "バトルさせる",
+                    "effects": [
+                      {
+                        "type": "battle",
+                        "attacker": {
+                          "ref": "source"
+                        },
+                        "defender": {
+                          "ref": "event.card"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "label": "何もしない",
+                    "effects": []
+                  }
+                ]
+              }
+            ],
+            "label": "相手のクリーチャーが手札以外から出た時、このクリーチャーとそのクリーチャーをバトルさせてもよい。"
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.47/77": {
+      "name_ja": "極勝秘伝カイザー・ビクトリー",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "nature"
+      ],
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "attack_chance",
+            "attack_creature": {
+              "civilization": "nature",
+              "power": {
+                "gte": 4000
+              }
+            }
+          },
+          {
+            "ability_id": "recycle",
+            "recycle_cost": 4,
+            "civilization": "nature"
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "自分の山札の上から1枚をマナゾーンに置く。",
+          "effect_id": "move_card",
+          "from_zone": "deck",
+          "to_zone": "mana",
+          "selection": "top",
+          "amount": 1,
+          "optional": false
+        },
+        {
+          "label": "その後、カードを1枚、自分のマナゾーンから手札に戻してもよい。",
+          "effect_id": "move_card",
+          "from_zone": "mana",
+          "to_zone": "hand",
+          "selection": "choose",
+          "amount": 1,
+          "optional": true,
+          "connector": "then",
+          "prompt": "マナゾーンから手札に戻すカードを1枚選んでもよい"
+        }
+      ]
+    },
+    "dm26-rp2.U.48/77": {
+      "name_ja": "熱血刃 ニケ",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "light",
+        "water"
+      ],
+      "power": 4500,
+      "abilities": {
+        "keyword": [
+          "just_diver"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "nike_enter_or_leave_tap",
+            "label": "このクリーチャーが出た時または離れた時、相手のクリーチャーを1体選び、タップする。次の自分のターンのはじめまで、それはアンタップしない。",
+            "ignore_source_continuity": true,
+            "active_zones": "any",
+            "trigger": {
+              "type": "or",
+              "triggers": [
+                {
+                  "type": "enter_battle",
+                  "card": {
+                    "ref": "source"
+                  }
+                },
+                {
+                  "type": "zone_change",
+                  "card": {
+                    "ref": "source"
+                  },
+                  "from_zone": "battle"
+                }
+              ]
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "effect": {
+                  "effect_id": "tap"
+                },
+                "store_as": "nike_target",
+                "optional": false,
+                "prompt": "タップする相手のクリーチャーを1体選ぶ"
+              },
+              {
+                "effect_id": "lock_untap",
+                "target": {
+                  "ref": "nike_target"
+                },
+                "duration": "until_start_of_controller_turn",
+                "connector": "then"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.49/77": {
+      "name_ja": "刀の3号 カツえもん逆",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "light",
+        "nature"
+      ],
+      "power": 6000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "powered_breaker"
+        ],
+        "static": [
+          {
+            "ability_id": "katsuemon_gyaku_power_boost",
+            "type": "grant_rule",
+            "rule": {
+              "scope": "self",
+              "ability": {
+                "ability_id": "power_buff",
+                "amount": 6000,
+                "active_if": {
+                  "type": "card_count_matches",
+                  "from": {
+                    "player": "controller",
+                    "zone": "battle"
+                  },
+                  "filter": {
+                    "card_type": "creature"
+                  },
+                  "op": "gte",
+                  "value": 3
+                }
+              }
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.50/77": {
+      "name_ja": "超熱血 ロビー",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "water",
+        "darkness"
+      ],
+      "power": 3000,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "powered_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "robbie_other_leaves_buff",
+            "label": "他のクリーチャーが離れた時、そのターン、このクリーチャーのパワーを+2000する。",
+            "trigger": {
+              "type": "and",
+              "triggers": [
+                {
+                  "type": "zone_change",
+                  "subject": "any",
+                  "from_zone": "battle",
+                  "filter": {
+                    "card_type": "creature"
+                  }
+                },
+                {
+                  "type": "not",
+                  "trigger": {
+                    "type": "zone_change",
+                    "card": {
+                      "ref": "source"
+                    }
+                  }
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "modify_power",
+                "card": {
+                  "ref": "source"
+                },
+                "amount": 2000,
+                "duration": "until_end_of_turn"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.51/77": {
+      "name_ja": "D2-W革命のボルトロン",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "darkness",
+        "fire"
+      ],
+      "power": 10000,
+      "abilities": {
+        "keyword": [
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "voltron_turn_end_seal_own",
+            "label": "自分のターンの終わりに、自分のクリーチャー1体に封印を1つ付ける。",
+            "trigger": {
+              "type": "turn_end",
+              "player": "controller"
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "own_creatures",
+                "optional": false,
+                "prompt": "封印を1つ付ける自分のクリーチャーを1体選ぶ",
+                "effect": {
+                  "effect_id": "attach_seal",
+                  "amount": 1,
+                  "seal_player": "target_owner"
+                }
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.U.52/77": {
+      "name_ja": "V闘龍 カツドン",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "fire",
+        "nature"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "speed_attacker",
+          "w_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "katsudon_enter_battle_mana",
+            "label": "このクリーチャーが出た時、自分の山札の上から2枚をマナゾーンに置いてもよい。そうしたら、カードを1枚、自分のマナゾーンから手札に戻す。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "move_card",
+                "from_zone": "deck",
+                "to_zone": "mana",
+                "selection": "top",
+                "amount": 2,
+                "optional": true,
+                "prompt": "山札の上から2枚をマナゾーンに置きますか？"
+              },
+              {
+                "effect_id": "move_card",
+                "from_zone": "mana",
+                "to_zone": "hand",
+                "amount": 1,
+                "optional": false,
+                "connector": "then",
+                "prompt": "マナゾーンから手札に戻すカードを選んでください"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.53/77": {
+      "name_ja": "タイム槍 ドレミ",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "light"
+      ],
+      "power": 4500,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": "light"
+            }
+          },
+          "blocker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "doremi_enter_spell_lock",
+            "label": "このクリーチャーが出た時、次の自分のターンのはじめまで、相手はコスト3以下の呪文を唱えられない。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "temporary_ability",
+                "target": {
+                  "ref": "source"
+                },
+                "ability": {
+                  "id": "cannot_cast_spells",
+                  "affected_player": "opponent",
+                  "max_cost": 3
+                },
+                "duration": "until_start_of_controller_turn"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.54/77": {
+      "name_ja": "熱血の羅刹 メフィス・トリック",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "light"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ],
+        "static": [
+          {
+            "ability_id": "mephis_trick_cannot_attack_players",
+            "type": "attack_rule",
+            "rule": {
+              "kind": "cannot_attack_player",
+              "scope": "self"
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.55/77": {
+      "name_ja": "神判のラクシャ コットン",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "light"
+      ],
+      "power": 1500,
+      "abilities": {
+        "keyword": [
+          "blocker",
+          "shield_go"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.56/77": {
+      "name_ja": "熱血の親衛隊ラプソディ",
+      "kind": "creature",
+      "cost": 1,
+      "civilizations": [
+        "light"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ],
+        "static": [
+          {
+            "ability_id": "rhapsody_cannot_attack_without_non_creature",
+            "type": "attack_rule",
+            "label": "このターンに自分がクリーチャーではないカードを実行していなければ、このクリーチャーは攻撃できない。",
+            "rule": {
+              "kind": "cannot_attack_unless",
+              "condition": {
+                "type": "turn_stat",
+                "stat": "non_creature_executed",
+                "player": "controller",
+                "op": "gte",
+                "value": 1
+              }
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.57/77": {
+      "name_ja": "ホーリー・出す・バナナ",
+      "kind": "spell",
+      "cost": 2,
+      "civilizations": [
+        "light"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "label": "自分のクリーチャーを1体アンタップする。次の自分のターンのはじめまで、そのクリーチャーのパワーを+4000する。",
+              "effect_id": "select_then",
+              "candidates": "own_creatures",
+              "optional": false,
+              "store_as": "holy_banana_target",
+              "prompt": "アンタップして+4000＆ブロッカーを与える自分のクリーチャーを1体選ぶ",
+              "effects": [
+                {
+                  "effect_id": "untap"
+                },
+                {
+                  "effect_id": "modify_power",
+                  "amount": 4000,
+                  "duration": "until_start_of_controller_turn"
+                }
+              ]
+            },
+            {
+              "label": "次の自分のターンのはじめまで、そのクリーチャーに「ブロッカー」を与える。",
+              "effect_id": "temporary_ability",
+              "target": {
+                "ref": "holy_banana_target"
+              },
+              "ability": {
+                "id": "blocker"
+              },
+              "duration": "until_start_of_controller_turn",
+              "connector": "then"
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.C.58/77": {
+      "name_ja": "宇宙 バリアスキー",
+      "kind": "creature",
+      "cost": 5,
+      "civilizations": [
+        "water"
+      ],
+      "power": 5000,
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "bariaski_enter_or_leave_bounce",
+            "label": "このクリーチャーが出た時または離れた時、相手のクリーチャーを1体選び、持ち主の手札に戻してもよい。",
+            "ignore_source_continuity": true,
+            "active_zones": "any",
+            "trigger": {
+              "type": "or",
+              "triggers": [
+                {
+                  "type": "enter_battle",
+                  "card": {
+                    "ref": "source"
+                  }
+                },
+                {
+                  "type": "zone_change",
+                  "card": {
+                    "ref": "source"
+                  },
+                  "from_zone": "battle"
+                }
+              ]
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "effect": {
+                  "effect_id": "bounce"
+                },
+                "optional": true,
+                "prompt": "持ち主の手札に戻す相手のクリーチャーを1体選んでもよい"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.59/77": {
+      "name_ja": "【問銃】テック",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "water"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": "water"
+            }
+          },
+          "just_diver"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "tech_enter_combat_lock",
+            "label": "このクリーチャーが出た時、相手のクリーチャーを1体選ぶ。次の自分のターンのはじめまで、そのクリーチャーは攻撃もブロックもできない。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "select_then",
+                "candidates": "opponent_creatures",
+                "optional": false,
+                "prompt": "攻撃もブロックもできなくする相手のクリーチャーを1体選ぶ",
+                "effect": {
+                  "effect_id": "temporary_combat_restriction",
+                  "restrictions": [
+                    "attack",
+                    "block"
+                  ],
+                  "duration": "until_start_of_controller_turn"
+                }
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.60/77": {
+      "name_ja": "熱血の親衛隊ペッパー",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "water"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "just_diver"
+        ],
+        "static": [
+          {
+            "ability_id": "pepper_cannot_attack_without_two_draws",
+            "type": "attack_rule",
+            "label": "このターンに自分がカードを2枚以上引いていなければ、このクリーチャーは攻撃できない。",
+            "rule": {
+              "kind": "cannot_attack_unless",
+              "condition": {
+                "type": "turn_stat",
+                "stat": "cards_drawn",
+                "player": "controller",
+                "op": "gte",
+                "value": 2
+              }
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.61/77": {
+      "name_ja": "アクア秘務官 ロバート・フック",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "water"
+      ],
+      "power": 2000,
+      "abilities": {
+        "keyword": [
+          "powered_breaker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "robert_hooke_spell_cast_buff",
+            "label": "自分が呪文を唱えた時、このターン、このクリーチャーのパワーを+3000する。",
+            "trigger": {
+              "type": "spell_cast",
+              "subject": "controller"
+            },
+            "effects": [
+              {
+                "type": "modify_power",
+                "card": {
+                  "ref": "source"
+                },
+                "amount": 3000,
+                "duration": "until_end_of_turn"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.62/77": {
+      "name_ja": "天災のSSS級計画",
+      "kind": "spell",
+      "cost": 2,
+      "civilizations": [
+        "water"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "相手のクリーチャーを1体選ぶ。次の自分のターンのはじめまで、そのクリーチャーは攻撃もブロックもできない。",
+          "effect_id": "select_then",
+          "candidates": "opponent_creatures",
+          "optional": false,
+          "prompt": "攻撃もブロックもできなくする相手のクリーチャーを1体選ぶ",
+          "effect": {
+            "effect_id": "temporary_combat_restriction",
+            "restrictions": [
+              "attack",
+              "block"
+            ],
+            "duration": "until_start_of_controller_turn"
+          }
+        },
+        {
+          "label": "このターン、自分のクリーチャー1体のパワーを+4000する。",
+          "effect_id": "select_then",
+          "candidates": "own_creatures",
+          "optional": false,
+          "prompt": "このターン、パワーを+4000する自分のクリーチャーを1体選ぶ",
+          "effects": [
+            {
+              "effect_id": "modify_power",
+              "amount": 4000,
+              "duration": "until_end_of_turn"
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.C.63/77": {
+      "name_ja": "ZEROの革命 ブラックアウト",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": "darkness"
+            }
+          },
+          "slayer"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "blackout_enter_mill_and_return_creature",
+            "label": "このクリーチャーが出た時、自分の山札の上から3枚を墓地に置く。その後、クリーチャーを1体、自分の墓地から手札に戻す。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "mill",
+                "target": "own_deck",
+                "amount": 3,
+                "optional": false
+              },
+              {
+                "effect_id": "move_card",
+                "from_zone": "graveyard",
+                "to_zone": "hand",
+                "amount": 1,
+                "target_player": "self",
+                "filter": {
+                  "card_type": "creature"
+                },
+                "optional": false,
+                "prompt": "墓地から手札に戻すクリーチャーを1体選ぶ"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.64/77": {
+      "name_ja": "革命α ドルーター",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "doruta_own_seal_to_graveyard_return",
+            "label": "自分の封印が墓地に置かれた時、そのカードを自分の墓地から手札に戻してもよい。",
+            "trigger": {
+              "type": "zone_change",
+              "to_zone": "graveyard"
+            },
+            "condition": {
+              "type": "event_zone_change_matches",
+              "player": "controller",
+              "from_seal": true
+            },
+            "effects": [
+              {
+                "type": "move",
+                "card": {
+                  "ref": "event.card"
+                },
+                "from_zone": "graveyard",
+                "to_zone": "hand",
+                "optional": true,
+                "prompt": "封印を自分の墓地から手札に戻しますか？"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.65/77": {
+      "name_ja": "熱血の親衛隊ファンク",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "blocker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "funk_turn_end_self_destroy",
+            "label": "各ターンの終わりに、このクリーチャーがタップしていれば、このクリーチャーを破壊する。",
+            "trigger": {
+              "type": "or",
+              "triggers": [
+                {
+                  "type": "turn_end",
+                  "player": "controller"
+                },
+                {
+                  "type": "turn_end",
+                  "player": "opponent"
+                }
+              ]
+            },
+            "active_if": {
+              "type": "card_state",
+              "card": "source",
+              "state": "tapped",
+              "value": true
+            },
+            "effects": [
+              {
+                "type": "destroy",
+                "card": {
+                  "ref": "source"
+                }
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.66/77": {
+      "name_ja": "禁術のラクシャ カレイル",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "darkness"
+      ],
+      "power": 2000,
+      "abilities": {
+        "keyword": [
+          "shield_go"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "careil_enter_take_own_shield",
+            "label": "このクリーチャーが出た時、自分のシールドを1つ手札に加える。その「S・トリガー」は使えない。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "add_shield_to_hand",
+                "target": "own_shields",
+                "optional": false,
+                "disable_s_trigger": true
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.67/77": {
+      "name_ja": "狼牙獣鎌拳",
+      "kind": "spell",
+      "cost": 3,
+      "civilizations": [
+        "darkness"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "label": "相手のクリーチャーを1体選ぶ。このターン、そのクリーチャーのパワーを-4000する。",
+          "effect_id": "select_then",
+          "candidates": "opponent_creatures",
+          "optional": false,
+          "prompt": "このターン、パワーを-4000する相手のクリーチャーを1体選ぶ",
+          "effects": [
+            {
+              "effect_id": "modify_power",
+              "amount": -4000,
+              "duration": "until_end_of_turn"
+            }
+          ]
+        },
+        {
+          "label": "このターン、自分のクリーチャー1体のパワーを+4000する。",
+          "effect_id": "select_then",
+          "candidates": "own_creatures",
+          "optional": false,
+          "prompt": "このターン、パワーを+4000する自分のクリーチャーを1体選ぶ",
+          "effects": [
+            {
+              "effect_id": "modify_power",
+              "amount": 4000,
+              "duration": "until_end_of_turn"
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.C.68/77": {
+      "name_ja": "超革命 マッハ55",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": "fire"
+            }
+          },
+          "speed_attacker"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "mach55_destroy_non_summon_enter",
+            "label": "自分のターンに相手のクリーチャーが召喚以外の方法で出た時、そのクリーチャーを破壊する。",
+            "trigger": {
+              "type": "enter_battle",
+              "subject": "opponent",
+              "filter": {
+                "card_type": "creature"
+              },
+              "reason": {
+                "ne": "summon"
+              }
+            },
+            "condition": {
+              "type": "turn_player_is",
+              "player": "controller"
+            },
+            "effects": [
+              {
+                "type": "destroy",
+                "card": {
+                  "ref": "event.card"
+                }
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.69/77": {
+      "name_ja": "雪精 マリニャン。",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 8000,
+      "abilities": {
+        "keyword": [
+          "super_guardman",
+          "w_breaker"
+        ],
+        "static": [
+          {
+            "ability_id": "marinyan_cannot_attack_without_other_attack",
+            "type": "attack_rule",
+            "label": "このターンに他のクリーチャーが攻撃していなければ、このクリーチャーは攻撃できない。",
+            "rule": {
+              "kind": "cannot_attack_unless",
+              "condition": {
+                "type": "turn_stat",
+                "stat": "creatures_attacked",
+                "player": "controller",
+                "op": "gte",
+                "value": 1
+              }
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.70/77": {
+      "name_ja": "機神勇者ビクトリーダッシュ・バスター",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [],
+        "static": [
+          {
+            "ability_id": "victory_dash_buster_attack_untapped",
+            "type": "attack_rule",
+            "label": "このクリーチャーは、アンタップしているクリーチャーを攻撃できる。",
+            "rule": {
+              "kind": "can_attack_untapped"
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.71/77": {
+      "name_ja": "熱血の親衛隊クラップ",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "fire"
+      ],
+      "power": 2000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "power_attacker",
+            "amount": 3000
+          }
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.72/77": {
+      "name_ja": "FORBIDDEN RAGE ～禁断の怒り～",
+      "kind": "spell",
+      "cost": 2,
+      "civilizations": [
+        "fire"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "effect_id": "select_then",
+              "candidates": "own_creatures",
+              "optional": false,
+              "store_as": "forbidden_rage_own_creature",
+              "prompt": "パワーを+4000する自分のクリーチャーを1体選ぶ",
+              "effect": {
+                "effect_id": "modify_power",
+                "amount": 4000,
+                "duration": "until_end_of_turn"
+              }
+            },
+            {
+              "effect_id": "select_then",
+              "candidates": "opponent_creatures",
+              "optional": true,
+              "connector": "then",
+              "prompt": "バトルさせる相手のクリーチャーを1体選ぶ",
+              "effect": {
+                "effect_id": "battle",
+                "target": {
+                  "ref": "forbidden_rage_own_creature"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dm26-rp2.C.73/77": {
+      "name_ja": "雪精 サエポヨ。",
+      "kind": "creature",
+      "cost": 7,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 12000,
+      "abilities": {
+        "keyword": [
+          {
+            "scope": "own_creature",
+            "ability_id": "sympathy"
+          },
+          "super_guardman",
+          "t_breaker"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.74/77": {
+      "name_ja": "風の1号 ハムカツマン逆",
+      "kind": "creature",
+      "cost": 4,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          {
+            "ability_id": "revolution_change",
+            "attack_creature": {
+              "civilization": "nature"
+            }
+          },
+          "mach_fighter"
+        ],
+        "static": [],
+        "triggered": [
+          {
+            "ability_id": "hamukatsuman_reverse_enter_reveal",
+            "label": "このクリーチャーが出た時、自分の山札の上から3枚を表向きにする。その中からパワー6000以上のクリーチャーを1体手札に加え、残りを好きな順序で山札の下に置く。",
+            "trigger": {
+              "type": "enter_battle",
+              "card": {
+                "ref": "source"
+              }
+            },
+            "effects": [
+              {
+                "effect_id": "look_top_choose_to_hand",
+                "amount": 3,
+                "optional": false,
+                "filter": {
+                  "card_type": "creature",
+                  "power": {
+                    "gte": 6000
+                  }
+                },
+                "prompt": "パワー6000以上のクリーチャーを1体手札に加える"
+              }
+            ]
+          }
+        ],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.75/77": {
+      "name_ja": "清浄のラクシャ インカ",
+      "kind": "creature",
+      "cost": 3,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 5000,
+      "abilities": {
+        "keyword": [
+          "shield_go"
+        ],
+        "static": [
+          {
+            "ability_id": "inca_tap_to_play",
+            "type": "enter_battle_rule",
+            "rule": {
+              "kind": "enters_tapped",
+              "zones": [
+                "battle"
+              ],
+              "optional": true,
+              "prompt": "このクリーチャーをタップして出しますか？"
+            },
+            "applies_to": {
+              "player": "self"
+            }
+          },
+          {
+            "ability_id": "inca_attack_lure",
+            "type": "attack_rule",
+            "label": "相手のクリーチャーが攻撃するなら、可能ならこのクリーチャーを攻撃する。",
+            "rule": {
+              "kind": "must_attack_this"
+            }
+          }
+        ],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.76/77": {
+      "name_ja": "熱血の親衛隊シウバ",
+      "kind": "creature",
+      "cost": 2,
+      "civilizations": [
+        "nature"
+      ],
+      "power": 4000,
+      "abilities": {
+        "keyword": [
+          "g_strike"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      }
+    },
+    "dm26-rp2.C.77/77": {
+      "name_ja": "完全熱血革命",
+      "kind": "spell",
+      "cost": 2,
+      "civilizations": [
+        "nature"
+      ],
+      "abilities": {
+        "keyword": [
+          "shield_trigger"
+        ],
+        "static": [],
+        "triggered": [],
+        "activated": [],
+        "replacement": []
+      },
+      "effects": [
+        {
+          "effect_id": "packaged",
+          "effects": [
+            {
+              "label": "自分のクリーチャーを1体タップしてもよい。次の自分のターンのはじめまで、そのクリーチャーのパワーを+4000する。",
+              "effect_id": "select_then",
+              "candidates": "own_creatures",
+              "optional": true,
+              "store_as": "kanzen_target",
+              "prompt": "タップして+4000＆攻撃誘導を与える自分のクリーチャーを1体選ぶ",
+              "effects": [
+                {
+                  "effect_id": "tap"
+                },
+                {
+                  "effect_id": "modify_power",
+                  "amount": 4000,
+                  "duration": "until_start_of_controller_turn"
+                }
+              ]
+            },
+            {
+              "label": "次の自分のターンのはじめまで、相手のクリーチャーが攻撃するなら、可能ならそのクリーチャーを攻撃する。",
+              "effect_id": "temporary_ability",
+              "target": {
+                "ref": "kanzen_target"
+              },
+              "ability": {
+                "id": "attack_lure"
+              },
+              "duration": "until_start_of_controller_turn",
+              "connector": "then"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
