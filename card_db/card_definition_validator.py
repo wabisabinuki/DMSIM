@@ -35,6 +35,26 @@ EFFECT_TYPES_WITH_CHILDREN = (
 
 IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
+_KNOWN_KEYWORD_IDS = None
+
+
+def _known_keyword_ids():
+    """登録済みキーワード ID 集合（registry を遅延 import してキャッシュ）。
+
+    `abilities.registry` は多数の ability クラスを import するため、循環 import を
+    避けて呼び出し時に1度だけ取り込む。`ABILITY_METADATA`（reminder 等のメタのみ
+    保持する keyword）も含めて漏れを防ぐ。
+    """
+
+    global _KNOWN_KEYWORD_IDS
+    if _KNOWN_KEYWORD_IDS is None:
+        from abilities.registry import ABILITY_BUILDERS, ABILITY_METADATA
+
+        _KNOWN_KEYWORD_IDS = frozenset(ABILITY_BUILDERS) | frozenset(
+            ABILITY_METADATA
+        )
+    return _KNOWN_KEYWORD_IDS
+
 CARD_TYPE_KEYS = frozenset(("card_type", "card_types"))
 ZONE_ALIAS_FIXES = {
     "battle_zone": "battle",
@@ -312,6 +332,14 @@ class CardDefinitionValidator:
             return []
 
         warnings = []
+        warnings.extend(
+            self._warn_unknown_keywords(
+                abilities,
+                path,
+                card_id,
+                card_name,
+            )
+        )
         for group in (
             "static",
             "triggered",
@@ -1528,6 +1556,47 @@ class CardDefinitionValidator:
                 ),
             )
         )
+        return warnings
+
+    def _warn_unknown_keywords(
+        self,
+        abilities,
+        path,
+        card_id,
+        card_name,
+    ):
+        if not isinstance(abilities, dict):
+            return []
+
+        known = _known_keyword_ids()
+        warnings = []
+        for index, entry in enumerate(_as_list(abilities.get("keyword"))):
+            if isinstance(entry, str):
+                keyword_id = entry
+            elif isinstance(entry, dict):
+                keyword_id = entry.get("ability_id") or entry.get("id")
+            else:
+                continue
+
+            if not keyword_id or keyword_id in known:
+                continue
+
+            warnings.append(
+                self._warning(
+                    card_id,
+                    card_name,
+                    "W_UNKNOWN_KEYWORD",
+                    f"{path}.keyword[{index}]",
+                    (
+                        f"unknown keyword id {keyword_id!r} is not registered; "
+                        "the ability will raise at runtime when built"
+                    ),
+                    (
+                        "register it in abilities/registry.py "
+                        "(ABILITY_BUILDERS) or fix the spelling"
+                    ),
+                )
+            )
         return warnings
 
     def _warn_zone_aliases(
